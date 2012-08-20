@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Summation</title>
+</head>
+<body>
+    
+<script type="text/javascript">
+
+
+// option 1 using a simple function and loop
+function summation1(num) {
+    var total = 0;
+    
+    for (var i = num; i >= 0; i--) {
+        total += i;
+    }
+    
+    return total;
+}
+
+alert(summation1(10));
+
+
+// option 2 using a recursive function and callback
+function summation2(num, total, callback) {
+    total = (total === null) ? 0 : total;
+    
+    if (num > 0) {
+        total += num;
+        
+        summation2(num-1, total, callback);
+    } else {
+        callback(total);
+    }
+}
+
+summation2(10, null, function(total) {
+    alert(total);
+});
+
+
+</script>
+
+</body>
+</html>
