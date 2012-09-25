@@ -1,3 +1,3 @@
 # Random Stuff
 
-So far this project just contains some summation functions written in JavaScript.
+So far this project just contains some basic algorithms written in JavaScript.
