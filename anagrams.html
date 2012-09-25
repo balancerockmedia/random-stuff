@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Anagrams</title>
+</head>
+<body>
+    
+<script type="text/javascript">
+
+// returns the number of anagrams in an array of strings
+function anagrams(strings) {
+    var sorted = [];
+    
+    for (var i=0; i < strings.length; i++) {
+        var chars = strings[i].split('');
+        var sorted_chars = chars.sort();
+        var new_string = chars.join('');
+        sorted.push(new_string);
+    }
+    
+    var num_anagrams = 0;
+    
+    for (var i=0; i < sorted.length; i++) {
+        var match = false;
+        
+        for (var j=0; j < sorted.length; j++) {
+            if (sorted[i] === sorted[j] && i !== j) {
+                match = true;
+                break;
+            }
+        }
+        
+        if (match) {
+            num_anagrams++;
+        }
+    }
+    
+    return num_anagrams;
+}
+
+alert(anagrams(["cat", "tac", "atc", "dog", "god", "apple", "pear"]));
+
+</script>
+
+</body>
+</html>
