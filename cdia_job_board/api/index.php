@@ -23,9 +23,9 @@ $app->get('/jobs', function(Request $request) use ($app) {
     INNER JOIN category ON category.id = job.category_id 
     LEFT OUTER JOIN (
         SELECT job_keyword.job_id as job_id, group_concat(keyword.name separator ', ') as keyword_list
-    	FROM job_keyword
-    	INNER JOIN keyword ON keyword.id = job_keyword.keyword_id
-    	GROUP BY job_keyword.job_id
+        FROM job_keyword
+        INNER JOIN keyword ON keyword.id = job_keyword.keyword_id
+        GROUP BY job_keyword.job_id
     ) AS keywords 
         ON keywords.job_id = job.id
                   
