@@ -1,0 +1,16 @@
+/* used to push content down past global navigation bar */
+body { padding-top: 60px; }
+
+/* structure */
+#search_bar { padding-bottom: 0; }
+
+/* forms */
+form { margin: 0; }
+.form-search select { margin: 0 19px 19px 0; }
+input[type="text"] { margin: 0 19px 19px 0; }
+#reset { margin: 0 0 19px; }
+
+/* media queries */
+@media screen and (max-width: 767px) {
+  #sidebar { display: none; }
+}
