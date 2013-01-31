@@ -17,7 +17,6 @@ jb.search = {
             
             if (local_search_data !== null) {
                 jb.search.search_data = JSON.parse(local_search_data);
-                jb.search.update_search_terms();
             }
         } catch(error) {
             console.log('Error using localstorage: ' + error)
@@ -42,7 +41,7 @@ jb.search = {
                 $('#job_details .modal-body').text(data.description);
                 
                 $('#job_details').modal();
-    		});
+            });
         });
     },
     

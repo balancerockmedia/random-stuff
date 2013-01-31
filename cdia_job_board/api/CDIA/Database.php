@@ -34,6 +34,19 @@ class Database {
      * @param string $query
      * @return PDOStatement
      */
+    public function fetch($query, $params) {
+        $stmt = $this->pdo->prepare($query);
+        
+        $stmt->execute($params);
+        
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+    
+    /**
+     *
+     * @param string $query
+     * @return PDOStatement
+     */
     public function fetchAll($query, $params) {
         $stmt = $this->pdo->prepare($query);
         

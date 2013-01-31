@@ -9,6 +9,7 @@ require_once __DIR__.'/cdia/Database.php';
 
 // create the Silex application
 $app = new Silex\Application();
+$app['debug'] = TRUE;
 
 // inject Database object
 $app['db'] = new CDIA\Database();
@@ -36,39 +37,42 @@ EOD;
     
     if (!is_null($search)) {
         $where = '';
+        $params = array();
         
         if ($search['keyword'] !== '') {
-            $keyword_with_no_spaces = str_replace(' ', '', $search['keyword']);
-            
             if ($where === '') {
-                $where .= " WHERE FIND_IN_SET('$keyword_with_no_spaces', REPLACE(keywords.keyword_list, SPACE(1), ''))";
+                $where .= " WHERE FIND_IN_SET(:keyword_with_no_spaces, REPLACE(keywords.keyword_list, SPACE(1), ''))";
             } else {
-                $where .= " AND FIND_IN_SET('$keyword_with_no_spaces', REPLACE(keywords.keyword_list, SPACE(1), ''))";
+                $where .= " AND FIND_IN_SET(:keyword_with_no_spaces, REPLACE(keywords.keyword_list, SPACE(1), ''))";
             }
+            
+            $params['keyword_with_no_spaces'] = str_replace(' ', '', $search['keyword']);
         }
         
         if ($search['location'] !== '') {
             if ($where === '') {
-                $where .= " WHERE location.name = '{$search['location']}'";
+                $where .= " WHERE location.name = :location";
             } else {
-                $where .= " AND location.name = '{$search['location']}'";
+                $where .= " AND location.name = :location";
             }
+            
+            $params['location'] = $search['location'];
         }
         
         if ($search['category'] !== '') {
             if ($where === '') {
-                $where .= " WHERE category.name = '{$search['category']}'";
+                $where .= " WHERE category.name = :category";
             } else {
-                $where .= " AND category.name = '{$search['category']}'";
+                $where .= " AND category.name = :category";
             }
+            
+            $params['category'] = $search['category'];
         }
         
         $query .= $where;
     }
-           
-    $result = $app['db']->getResult($query);
     
-    return new JsonResponse($result->fetchAll(PDO::FETCH_ASSOC));
+    return new JsonResponse($app['db']->fetchAll($query, $params));
 });
 
 // get job by id
@@ -77,13 +81,15 @@ $app->get('/job/{id}', function(Request $request, $id) use ($app) {
     
     SELECT job.id AS job_id, job.title, job.description 
     FROM job 
-    WHERE job.id = '$id'
+    WHERE job.id = :id
                   
 EOD;
-            
-    $result = $app['db']->getResult($query);
     
-    return new JsonResponse($result->fetch(PDO::FETCH_ASSOC));
+    $params = array(
+        'id' => $id
+    );
+    
+    return new JsonResponse($app['db']->fetch($query, $params));
 });
 
 // get states (handles JSONP requests as well as normal JSON)
