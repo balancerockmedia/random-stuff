@@ -1,6 +1,4 @@
-/* ---- data structure for a basic blog (foreign keys) ---- */
-
-CREATE DATABASE blog;
+REATE DATABASE blog;
 
 USE blog;
 
