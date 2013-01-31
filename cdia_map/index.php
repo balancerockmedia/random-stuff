@@ -47,6 +47,7 @@
                         <option value="">Status</option>
                         <option value="student">Student</option>
                         <option value="alumni">Alumni</option>
+                        <option value="instructor">Instructor</option>
                     </select>
                     
                     <a id="reset" class="btn disabled" href="#">Reset</a>

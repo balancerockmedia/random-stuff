@@ -47,11 +47,12 @@ VALUES
 INSERT INTO status 
 	(name) 
 VALUES 
-    ('student'),
-	('alumni'),
-	('instructor');
+    ('Student'),
+	('Alumni'),
+	('Instructor');
     
 INSERT INTO student 
 	(first_name, last_name, city, state, country, latitude, longitude, program_id, status_id) 
 VALUES 
-	('Daniel', 'Johnson', 'Westminster', 'MA', 'United States', '42.544768', '-71.910961', 1, 3);
+	('Daniel', 'Johnson', 'Westminster', 'MA', 'United States', '42.544768', '-71.910961', 3, 3),
+    ('Ben', 'Caplan', 'Waltham', 'MA', 'United States', '42.376438', '-71.235321', 3, 3);

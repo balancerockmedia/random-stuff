@@ -20,7 +20,7 @@ $app['db'] = new CDIA\Database();
 $app->get('/students', function(Request $request) use ($app) {    
     $query = <<<EOD
     
-    SELECT student.*, program.name, status.name
+    SELECT student.*, program.name AS program_name, status.name AS status_name
     FROM student 
     INNER JOIN program ON program.id = student.program_id 
     INNER JOIN status ON status.id = student.status_id
@@ -34,7 +34,7 @@ EOD;
 $app->get('/student/{id}', function(Request $request, $id) use ($app) {
     $query = <<<EOD
     
-    SELECT student.*, program.name, status.name
+    SELECT student.*, program.name AS program_name, status.name AS status_name
     FROM student 
     INNER JOIN program ON program.id = student.program_id 
     INNER JOIN status ON status.id = student.status_id 
