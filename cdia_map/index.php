@@ -50,7 +50,7 @@
                         <option value="instructor">Instructor</option>
                     </select>
                     
-                    <a id="reset" class="btn disabled" href="#">Reset</a>
+                    <a id="reset" class="btn" href="#">Reset</a>
                 </form>
             </div>
             

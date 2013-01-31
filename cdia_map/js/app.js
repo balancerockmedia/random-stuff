@@ -70,6 +70,16 @@ var cdia_map = {
                 }
             });
         });
+        
+        $('#reset').on('click', function(e) {
+            e.preventDefault();
+            
+            $('select[name="program"], select[name="status"]').val(0);
+            
+            $.each(cdia_map.markers, function() {
+                this.setVisible(true);
+            });
+        });
     }
 };
 
