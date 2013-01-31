@@ -32,6 +32,7 @@ class Database {
     /**
      *
      * @param string $query
+     * @param array $params
      * @return PDOStatement
      */
     public function fetch($query, $params) {
@@ -45,6 +46,7 @@ class Database {
     /**
      *
      * @param string $query
+     * @param array $params 
      * @return PDOStatement
      */
     public function fetchAll($query, $params) {
@@ -58,7 +60,7 @@ class Database {
     /**
      *
      * @param string $table 
-     * @param array $params 
+     * @param array $params
      * @return int|boolean insert_id or FALSE
      */
     public function insert($table, $params) {
