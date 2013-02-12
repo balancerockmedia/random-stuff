@@ -17,13 +17,13 @@ $app['debug'] = FALSE;
 $app['db'] = new CDIA\Database();
 
 // get all jobs
-$app->get('/students', function(Request $request) use ($app) {    
+$app->get('/users', function(Request $request) use ($app) {    
     $query = <<<EOD
     
-    SELECT student.*, program.name AS program_name, status.name AS status_name
-    FROM student 
-    INNER JOIN program ON program.id = student.program_id 
-    INNER JOIN status ON status.id = student.status_id
+    SELECT user.*, program.name AS program_name, status.name AS status_name
+    FROM user 
+    INNER JOIN program ON program.id = user.program_id 
+    INNER JOIN status ON status.id = user.status_id
                   
 EOD;
     
@@ -31,14 +31,14 @@ EOD;
 });
 
 // get student by id
-$app->get('/student/{id}', function(Request $request, $id) use ($app) {
+$app->get('/user/{id}', function(Request $request, $id) use ($app) {
     $query = <<<EOD
     
-    SELECT student.*, program.name AS program_name, status.name AS status_name
-    FROM student 
-    INNER JOIN program ON program.id = student.program_id 
-    INNER JOIN status ON status.id = student.status_id 
-    WHERE student.id = :id
+    SELECT user.*, program.name AS program_name, status.name AS status_name
+    FROM user 
+    INNER JOIN program ON program.id = user.program_id 
+    INNER JOIN status ON status.id = user.status_id 
+    WHERE user.id = :id
                   
 EOD;
     

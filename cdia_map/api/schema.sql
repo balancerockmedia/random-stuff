@@ -12,7 +12,7 @@ CREATE TABLE status (
 	name VARCHAR(50) NOT NULL
 ) ENGINE=InnoDB;
 
-CREATE TABLE student (
+CREATE TABLE user (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     
 	first_name VARCHAR(50) NOT NULL,
@@ -51,7 +51,7 @@ VALUES
 	('Alumni'),
 	('Instructor');
     
-INSERT INTO student 
+INSERT INTO user 
 	(first_name, last_name, city, state, country, latitude, longitude, program_id, status_id) 
 VALUES 
 	('Daniel', 'Johnson', 'Westminster', 'MA', 'United States', '42.544768', '-71.910961', 3, 3),
