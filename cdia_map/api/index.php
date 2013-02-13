@@ -20,7 +20,7 @@ $app['db'] = new CDIA\Database();
 $app->get('/users', function(Request $request) use ($app) {    
     $query = <<<EOD
     
-    SELECT user.*, program.name AS program_name, status.name AS status_name
+    SELECT user.id, first_name, last_name, latitude, longitude, program.name AS program_name, status.name AS status_name
     FROM user 
     INNER JOIN program ON program.id = user.program_id 
     INNER JOIN status ON status.id = user.status_id
