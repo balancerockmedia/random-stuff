@@ -109,9 +109,34 @@ var cdia_map = {
                 this.setVisible(true);
             });
         });
+    },
+    
+    admin: function() {
+        $('#admin_link').on('click', function(e) {
+            e.preventDefault();
+            
+            $('#admin_modal').modal();
+        });
+        
+        $('#add_user_link').on('click', function(e) {
+            e.preventDefault();
+            
+            $('#edit_delete_users').hide();
+            $('#go_back_link, #add_user').show();
+            $(e.target).text('Save');
+        });
+        
+        $('#go_back_link').on('click', function(e) {
+            e.preventDefault();
+            
+            $('#go_back_link, #add_user').hide();
+            $('#edit_delete_users').show();
+            $('#add_user_link').text('Add User');
+        });
     }
 };
 
 $(function() {
     cdia_map.init();
+    cdia_map.admin();
 });

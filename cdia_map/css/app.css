@@ -9,6 +9,9 @@ form { margin: 0; }
 .form-search select { margin: 0 19px 19px 0; }
 input[type="text"] { margin: 0 19px 19px 0; }
 #reset { margin: 0 0 19px; }
+.form-search input[type="text"] { margin: 0; }
+.modal-body .form-search { margin-bottom: 19px; }
+#go_back_link, #add_user { display: none; }
 
 /* media queries */
 @media screen and (max-width: 767px) {

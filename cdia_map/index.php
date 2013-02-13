@@ -15,16 +15,13 @@
         <div class="container-fluid">
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                 <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
             </a>
             
             <a class="brand" href="index.php">CDIA Map</a>
             
             <div class="nav-collapse collapse">
                 <ul class="nav">
-                    <li><a href="http://cdiabu.com">Main Site</a></li>
-                    <li><a href="">Contact</a></li>
+                    <li><a id="admin_link" href="#">Admin</a></li>
                 </ul>
             </div>
         </div>
@@ -63,6 +60,59 @@
             <p><strong>CDIA Map of Students and Alumni</strong></p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
+    </div>
+</div>
+
+<div class="modal hide fade" id="admin_modal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3>CDIA Map Admin</h3>
+    </div>
+    <div class="modal-body">
+        <div id="edit_delete_users">
+            <h4>Search for a user by last name</h4>
+        
+            <form class="form-search">
+                <input type="text" class="input-medium search-query">
+                <button type="submit" class="btn">Search</button>
+            </form>
+        
+            <h4>Recently added users</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Program</th>
+                        <th>Status</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ben Caplan</td>
+                        <td>Web Development</td>
+                        <td>Instructor</td>
+                        <td><a href="#" class="btn btn-mini" data-id="">Edit</a></td>
+                        <td><a href="#" class="btn btn-mini btn-danger" data-id="">Remove</a></td>
+                    </tr>
+                    <tr>
+                        <td>Dan Johnson</td>
+                        <td>Web Development</td>
+                        <td>Instructor</td>
+                        <td><a href="#" class="btn btn-mini" data-id="">Edit</a></td>
+                        <td><a href="#" class="btn btn-mini btn-danger" data-id="">Remove</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="add_user">
+            <h4>Form for adding a user goes here</h4>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn" id="go_back_link">Back</a>
+        <a href="#" class="btn btn-primary" id="add_user_link">Add User</a>
     </div>
 </div>
 
