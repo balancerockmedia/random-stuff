@@ -1,0 +1,7 @@
+source :rubygems
+
+gem 'twitter'
+gem 'tweetstream'
+gem 'redis'
+gem 'data_mapper'
+gem 'dm-mysql-adapter'
