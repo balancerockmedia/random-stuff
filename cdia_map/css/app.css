@@ -12,6 +12,8 @@ input[type="text"] { margin: 0 19px 19px 0; }
 .form-search input[type="text"] { margin: 0; }
 .modal-body .form-search { margin-bottom: 19px; }
 #go_back_link, #add_user { display: none; }
+label { font-weight: bold; margin-top: 10px; }
+#add_user input[type="text"] { margin-bottom: 5px; }
 
 /* media queries */
 @media screen and (max-width: 767px) {

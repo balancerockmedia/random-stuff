@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CDIA Jobs</title>
+<title>CDIA Map</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="css/app.css" />
 <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css" />
@@ -72,13 +72,13 @@
         <div id="edit_delete_users">
             <h4>Search for a user by last name</h4>
         
-            <form class="form-search">
-                <input type="text" class="input-medium search-query">
-                <button type="submit" class="btn">Search</button>
+            <form class="form-search" id="search_form" method="post" action="">
+                <input type="text" class="input-medium search-query" name="search">
+                <button type="submit" name="submit" class="btn">Search</button>
             </form>
         
             <h4>Recently added users</h4>
-            <table class="table">
+            <table class="table" id="user_table">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -88,26 +88,31 @@
                         <th>&nbsp;</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>Ben Caplan</td>
-                        <td>Web Development</td>
-                        <td>Instructor</td>
-                        <td><a href="#" class="btn btn-mini" data-id="">Edit</a></td>
-                        <td><a href="#" class="btn btn-mini btn-danger" data-id="">Remove</a></td>
-                    </tr>
-                    <tr>
-                        <td>Dan Johnson</td>
-                        <td>Web Development</td>
-                        <td>Instructor</td>
-                        <td><a href="#" class="btn btn-mini" data-id="">Edit</a></td>
-                        <td><a href="#" class="btn btn-mini btn-danger" data-id="">Remove</a></td>
-                    </tr>
-                </tbody>
+                <tbody></tbody>
             </table>
         </div>
         <div id="add_user">
-            <h4>Form for adding a user goes here</h4>
+            <form method="post" action="">
+                <label>Name</label>
+                <input type="text" name="first_name" placeholder="first name" /> <input type="text" name="last_name" placeholder="last name" />
+                
+                <label>Address</label>
+                <input type="text" name="city" placeholder="city" /> <input type="text" name="state" placeholder="state" />
+                
+                <label></label>
+                <input type="text" name="country" placeholder="country" />
+                
+                <label>Coordinates</label>
+                <input type="text" name="latitude" placeholder="latitude" /> <input type="text" name="longitude" placeholder="longitude" />
+                
+                <label>Program</label>
+                <input type="text" name="program_id" />
+                
+                <label>Status</label>
+                <input type="text" name="status_id" />
+                
+                <input type="hidden" name="id" />
+            </form>
         </div>
     </div>
     <div class="modal-footer">

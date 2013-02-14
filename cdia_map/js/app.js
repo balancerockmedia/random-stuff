@@ -112,8 +112,26 @@ var cdia_map = {
     },
     
     admin: function() {
+        var update_users = function(users) {
+            var rows = '';
+                
+            if (users.length > 0) {
+                $.each(users, function() {
+                    rows += '<tr><td>'+this.first_name+' ' +this.last_name+'</td><td>'+this.program_name+'</td><td>'+this.status_name+'</td><td><a href="#" class="btn btn-mini edit" data-id="'+this.id+'">Edit</a></td><td><a href="#" class="btn btn-mini btn-danger remove" data-id="'+this.id+'">Remove</a></td></tr>';
+                });
+            } else {
+                rows += '<tr><td colspan="5">No Results</td></tr>';
+            }
+                
+            $('#user_table tbody').html(rows);
+        }
+        
         $('#admin_link').on('click', function(e) {
             e.preventDefault();
+            
+            $.get(cdia_map.api_url + 'users', {user: 'all'}, function(data) {
+                update_users(data);
+            });
             
             $('#admin_modal').modal();
         });
@@ -121,9 +139,24 @@ var cdia_map = {
         $('#add_user_link').on('click', function(e) {
             e.preventDefault();
             
-            $('#edit_delete_users').hide();
-            $('#go_back_link, #add_user').show();
-            $(e.target).text('Save');
+            if ($(e.target).text() === 'Save') {
+                var form_fields = $('#add_user form').serialize();
+                
+                $.post(cdia_map.api_url + 'upsert', form_fields, function(data) {
+                    $('#go_back_link, #add_user').hide();
+                    $('#edit_delete_users').show();
+                    $('#add_user_link').text('Add User');
+            
+                    $('#add_user input[type="text"], #add_user input[type="hidden"]').val('');
+                    
+                    update_users(data);
+                });
+            } else {
+                $('#edit_delete_users').hide();
+                $('#go_back_link').css('display', 'inline-block');
+                $('#add_user').show();
+                $(e.target).text('Save');
+            }
         });
         
         $('#go_back_link').on('click', function(e) {
@@ -132,6 +165,47 @@ var cdia_map = {
             $('#go_back_link, #add_user').hide();
             $('#edit_delete_users').show();
             $('#add_user_link').text('Add User');
+            
+            $('#add_user input[type="text"], #add_user input[type="hidden"]').val('');
+        });
+        
+        $('#search_form').on('submit', function(e) {
+            e.preventDefault();
+            
+            var form_fields = $(this).serialize();
+            
+            $.post(cdia_map.api_url + 'search', form_fields, function(data) {
+                update_users(data);
+            });
+        });
+        
+        $('#user_table').on('click', '.edit', function(e) {
+            e.preventDefault();
+            
+            var id = $(e.target).attr('data-id');
+            
+            $.getJSON(cdia_map.api_url + 'user/' + id, function(data) {
+                $.each(data, function(key, value) {
+                    $('#add_user input[name="'+key+'"]').val(value);
+                });
+                
+                $('#edit_delete_users').hide();
+                $('#go_back_link').css('display', 'inline-block');
+                $('#add_user').show();
+                $('#add_user_link').text('Save');
+            });
+        });
+        
+        $('#user_table').on('click', '.remove', function(e) {
+            e.preventDefault();
+            
+            if (confirm('Are you sure?')) {
+                var id = $(e.target).attr('data-id');
+            
+                $.get(cdia_map.api_url + 'remove/' + id, function(data) {
+                    update_users(data);
+                });
+            }
         });
     }
 };
