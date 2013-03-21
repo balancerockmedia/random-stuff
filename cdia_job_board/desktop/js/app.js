@@ -1,6 +1,6 @@
 var jb = {};
 
-jb.api_url = 'api/index.php/';
+jb.api_url = '../api/index.php/';
 jb.google_api_url = 'http://maps.googleapis.com/maps/api/';
 
 jb.search = {
