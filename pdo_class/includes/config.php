@@ -9,7 +9,7 @@ define('DATABASE', 'blog');
 
 // load classes
 function __autoload($class) {
-	require_once 'classes/' . $class . '.php';
+    require_once 'classes/' . $class . '.php';
 }
 
 ?>
