@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Palindromes</title>
+</head>
+<body>
+    
+<script type="text/javascript">
+
+var palindromes = function(data) {
+    var count = 0;
+    
+    for (var i = 0; i < data.length; i++) {
+        string1 = data[i].toLowerCase().replace(/\s/g, '');
+        string2 = data[i].toLowerCase().replace(/\s/g, '').split('').reverse().join('');
+        
+        if (string1 === string2) {
+            count++;
+        }
+    }
+    
+    return count;       
+}
+            
+console.log(palindromes(['JavaScript is fun', 'Evil olive', 'Never odd or even']))
+
+</script>
+
+</body>
+</html>
