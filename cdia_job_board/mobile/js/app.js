@@ -8,7 +8,7 @@ jb.init = function() {
         $.mobile.changePage("#home_page", {transition: "none"});
     }
     
-	$.getJSON(jb.api_url + 'jobs', function(data) {                    
+    $.getJSON(jb.api_url + 'jobs', function(data) {                    
         $('#job_list').empty();
                 
         var new_html = '';
@@ -18,7 +18,7 @@ jb.init = function() {
         });
                 
         $('#job_list').html(new_html).listview('refresh');
-	});
+    });
     
     $('#job_list').on('click', 'a', function(e) {
         e.preventDefault();
@@ -27,7 +27,7 @@ jb.init = function() {
         
         var job_id = $(e.currentTarget).attr('data-id');
         
-		$.getJSON(jb.api_url + 'job/' + job_id, function(data) {
+        $.getJSON(jb.api_url + 'job/' + job_id, function(data) {
             $('#job_details').html(_.template(jb.job_details_template, data));
                                
             $.mobile.loading('hide');
@@ -43,7 +43,7 @@ jb.init = function() {
         
         var job_id = $(e.currentTarget).attr('data-id');
         
-		$.getJSON(jb.api_url + 'job/' + job_id, function(data) {
+        $.getJSON(jb.api_url + 'job/' + job_id, function(data) {
             $('#job_details').html(_.template(jb.job_details_template, data));
             
             if ($.mobile.activePage.attr('id') === 'job_detail_page') {
