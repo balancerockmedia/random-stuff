@@ -1,0 +1,48 @@
+@import 'slideshow.css';
+
+/* hero */
+#heros {
+  position: relative;
+  height: 443px;
+	width: 760px;
+}
+
+.hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 443px;
+}
+
+.hero .caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  background: rgba(0,0,0,.6);
+  width: 99%;
+  color: #fff;
+  text-align: right;
+  font: 11px arial;
+  margin: 0;
+  padding: 10px 1% 10px 0;
+}
+
+#hero_nav {
+  position: absolute;
+  z-index: 100;
+  top: 5px;
+  right: 5px;
+  display: none;
+}
+
+#hero_nav a {
+  display: inline-block;
+  background: #333;
+  background: rgba(0,0,0,.6);
+  color: #fff;
+  padding: 3px 6px;
+  text-decoration: none;
+  font: 11px arial;
+}
