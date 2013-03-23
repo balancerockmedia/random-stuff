@@ -33,7 +33,7 @@ var cdia_map = {
     },
     
     place_pins: function() {
-		$.getJSON(cdia_map.api_url + 'users', function(data) {
+    $.getJSON(cdia_map.api_url + 'users', function(data) {
             $.each(data, function() {
                 var user = this;
                 
