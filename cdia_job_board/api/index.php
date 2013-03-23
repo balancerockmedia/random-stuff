@@ -11,7 +11,7 @@ require_once __DIR__.'/cdia/Database.php';
 $app = new Silex\Application();
 
 // debug mode
-$app['debug'] = FALSE;
+$app['debug'] = true;
 
 // inject Database object
 $app['db'] = new CDIA\Database();
@@ -20,9 +20,10 @@ $app['db'] = new CDIA\Database();
 $app->get('/jobs', function(Request $request) use ($app) {    
     $query = <<<EOD
     
-    SELECT job.id AS job_id, job.title, location.name AS location_name, category.name AS category_name, keywords.keyword_list
+    SELECT job.id AS job_id, job.title, job.tagline, location.name AS location_name, type.name AS type, category.name AS category_name, keywords.keyword_list
     FROM job 
     INNER JOIN location ON location.id = job.location_id 
+    INNER JOIN type ON type.id = job.type_id  
     INNER JOIN category ON category.id = job.category_id 
     LEFT OUTER JOIN (
         SELECT job_keyword.job_id as job_id, group_concat(keyword.name separator ', ') as keyword_list
@@ -37,9 +38,10 @@ EOD;
     // build up the WHERE clause based on the search param
     $search = $request->get('search');
     
+    $params = array();
+    
     if (!is_null($search)) {
         $where = '';
-        $params = array();
         
         if ($search['keyword'] !== '') {
             if ($where === '') {
