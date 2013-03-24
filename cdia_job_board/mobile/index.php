@@ -35,8 +35,8 @@
     </div>
     
     <div data-role="panel" id="home_page_favorites" class="favorites" data-position="right" data-display="push">
-        <p><a href="#" data-id="1">Job 1</a></p>
-        <p><a href="#" data-id="3">Job 3</a></p>
+        <h3>Favorites</h3>
+        <div class="favorites_list"></div>
     </div>
 </div>
 
@@ -64,8 +64,8 @@
     </div>
     
     <div data-role="panel" id="job_detail_page_favorites" class="favorites" data-position="right" data-display="push">
-        <p><a href="#" data-id="1">Job 1</a></p>
-        <p><a href="#" data-id="3">Job 3</a></p>
+        <h3>Favorites</h3>
+        <div class="favorites_list"></div>
     </div>
 </div>
 
