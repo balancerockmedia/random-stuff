@@ -8,7 +8,7 @@ require.config({
 });
 
 require(['jquery', 'lodash', 'templates', 'jquery.mobile'], function($, _, templates) {
-    
+
     var jb = {};
 
     jb.api_url = '../api/index.php/';
