@@ -16,26 +16,26 @@ require(['jquery', 'lodash', 'templates', 'favorites', 'jquery.mobile'], functio
         if ($.mobile.activePage === undefined) {
             $.mobile.changePage("#home_page", {transition: "none"});
         }
-    
+        
         $.getJSON(api_url + 'jobs', function(data) {                    
             $('#job_list').empty();
-                
+            
             var new_html = '';
-                
+            
             _.forEach(data, function(item) {
                 new_html += _.template(templates.job_row, item);
             });
-                
+            
             $('#job_list').html(new_html).listview('refresh');
         });
     
         $('#job_list').on('click', 'a', function(e) {
             e.preventDefault();
-        
+            
             $.mobile.loading('show');
-        
+            
             var id = $(e.currentTarget).attr('data-id');
-        
+            
             $.getJSON(api_url + 'job/' + id, function(data) {
                 $('#job_details').html(_.template(templates.job_details, data)).trigger('create');
                                
@@ -44,7 +44,7 @@ require(['jquery', 'lodash', 'templates', 'favorites', 'jquery.mobile'], functio
                 $.mobile.changePage("#job_detail_page", {transition: "flip"});
             });
         });
-    };
+    }
 
     $(function() {
         init();

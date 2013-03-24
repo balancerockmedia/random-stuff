@@ -6,10 +6,10 @@ define(['jquery', 'lodash', 'templates', 'jquery.mobile'], function($, _, templa
     var init = function() {
         try {
             favorites = JSON.parse(localStorage.getItem('jb.favorites')) || [];
-        } catch(error) {
+        } catch (error) {
             console.log('Error using localStorage: ' + error);
         }
-    
+        
         $('#job_detail_page').on('click', '.add_favorite', function(e) {
             e.preventDefault();
     
@@ -27,7 +27,7 @@ define(['jquery', 'lodash', 'templates', 'jquery.mobile'], function($, _, templa
     
             try {
                 localStorage.setItem('jb.favorites', JSON.stringify(favorites));
-            } catch(error) {
+            } catch (error) {
                 console.log('Error using localStorage: ' + error);
             }
         });
@@ -61,7 +61,7 @@ define(['jquery', 'lodash', 'templates', 'jquery.mobile'], function($, _, templa
                 $.mobile.changePage("#job_detail_page", {transition: "flip"});
             });
         });
-    };
+    }
 
     return {
         init: init
