@@ -9,7 +9,7 @@ require.config({
 
 require(['jquery', 'lodash', 'templates', 'favorites', 'jquery.mobile'], function($, _, templates, favorites) {
 
-    var api_url = '../api/index.php/';
+    var api_url = 'http://173.203.102.128/cdia_job_board/api/index.php/';
 
     var init = function() {
         // fix the refresh problem when not on homepage
@@ -17,7 +17,7 @@ require(['jquery', 'lodash', 'templates', 'favorites', 'jquery.mobile'], functio
             $.mobile.changePage("#home_page", {transition: "none"});
         }
         
-        $.getJSON(api_url + 'jobs', function(data) {                    
+        $.getJSON(api_url + 'jobs?callback=?', function(data) {             
             $('#job_list').empty();
             
             var new_html = '';
@@ -36,7 +36,7 @@ require(['jquery', 'lodash', 'templates', 'favorites', 'jquery.mobile'], functio
             
             var id = $(e.currentTarget).attr('data-id');
             
-            $.getJSON(api_url + 'job/' + id, function(data) {
+            $.getJSON(api_url + 'job/' + id + '?callback=?', function(data) {
                 $('#job_details').html(_.template(templates.job_details, data)).trigger('create');
                                
                 $.mobile.loading('hide');

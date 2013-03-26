@@ -49,7 +49,7 @@ define(['jquery', 'lodash', 'templates', 'jquery.mobile'], function($, _, templa
         
             var id = $(e.currentTarget).attr('data-id');
         
-            $.getJSON(api_url + 'job/' + id, function(data) {
+            $.getJSON(api_url + 'job/' + id + '?callback=?', function(data) {
                 $('#job_details').html(_.template(templates.job_details, data)).trigger('create');
             
                 if ($.mobile.activePage.attr('id') === 'job_detail_page') {
