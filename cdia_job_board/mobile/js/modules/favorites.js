@@ -16,7 +16,7 @@ define(['templates'], function(templates) {
             var id = $(e.currentTarget).attr('data-id');
             var title = $(e.currentTarget).attr('data-title');
             
-            if (_.find(favorites, { id: id}) !== undefined) {
+            if (_.find(favorites, {id: id}) !== undefined) {
                 return;
             }
     
