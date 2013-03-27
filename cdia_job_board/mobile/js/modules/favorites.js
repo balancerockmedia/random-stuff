@@ -1,4 +1,4 @@
-define(['jquery', 'lodash', 'templates', 'jquery.mobile'], function($, _, templates) {
+define(['templates'], function(templates) {
     
     var api_url = '../api/index.php/';
     var favorites = [];
