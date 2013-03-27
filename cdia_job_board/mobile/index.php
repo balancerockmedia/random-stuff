@@ -32,9 +32,6 @@
     </div>
     
     <div data-role="footer" data-position="fixed">
-        <a href="#">Jobs</a>
-        <a href="#">Companies</a>
-        <a href="#">Locations</a>
         <a class="favorites_link" href="#home_page_favorites">Favorites</a>
     </div>
     
@@ -61,9 +58,6 @@
     <div data-role="content" id="job_details"></div>
     
     <div data-role="footer" data-position="fixed">
-        <a href="#">Jobs</a>
-        <a href="#">Companies</a>
-        <a href="#">Locations</a>
         <a class="favorites_link" href="#job_detail_page_favorites">Favorites</a>
     </div>
     
