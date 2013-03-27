@@ -76,7 +76,13 @@ EOD;
         $query .= $where;
     }
     
-    return new JsonResponse($app['db']->fetchAll($query, $params));
+    if ($request->get('callback') !== NULL) {
+        $response = new JsonResponse($app['db']->fetchAll($query, $params));
+        
+        return $response->setCallback($request->get('callback'));
+    } else {
+        return new JsonResponse($app['db']->fetchAll($query, $params));
+    }
 });
 
 // get job by id
@@ -93,7 +99,13 @@ EOD;
         'id' => $id
     );
     
-    return new JsonResponse($app['db']->fetch($query, $params));
+    if ($request->get('callback') !== NULL) {
+        $response = new JsonResponse($app['db']->fetch($query, $params));
+        
+        return $response->setCallback($request->get('callback'));
+    } else {
+        return new JsonResponse($app['db']->fetch($query, $params));
+    }
 });
 
 // get states (handles JSONP requests as well as normal JSON)

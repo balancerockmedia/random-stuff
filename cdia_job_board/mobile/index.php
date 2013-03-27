@@ -6,6 +6,9 @@
 <title>CDIA Jobs</title>
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
 <link rel="stylesheet" href="css/app.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+<script src="js/libs/lodash.min.js"></script>
 <script data-main="js/app" src="js/require.js"></script>
 </head>
 <body>
