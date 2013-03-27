@@ -1,3 +1,4 @@
+<?php include 'mobile.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>

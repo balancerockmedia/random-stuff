@@ -1,6 +1,6 @@
 <?php
 
-namespace CDIA;
+namespace cdia;
 
 use \PDO as PDO;
 

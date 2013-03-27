@@ -9,12 +9,6 @@ require(['templates', 'favorites'], function(templates, favorites) {
     var api_url = 'http://173.203.102.128/cdia_job_board/api/index.php/';
 
     var init = function() {
-        // fix the refresh problem when not on homepage
-        // if (window.location.hash !== '')
-        if ($.mobile.activePage === undefined) {
-            $.mobile.changePage("#home_page", {transition: "none"});
-        }
-        
         $.getJSON(api_url + 'jobs?callback=?', function(data) {             
             $('#job_list').empty();
             
