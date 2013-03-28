@@ -22,11 +22,11 @@ $(window).load(function() {
         }
         
         if (position < 0) {
+            position += 1;
+            
             $('.gallery').animate({
                 'margin-left': '+='+img_width+'px'
             });
-            
-            position += 1;
         }
     });
 });
