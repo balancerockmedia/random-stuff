@@ -38,7 +38,14 @@ jb.search = {
             
     		$.getJSON(jb.api_url + 'job/' + id, function(data) {                    
                 $('#job_details h3').text(data.title);
-                $('#job_details .modal-body').text(data.description);
+                
+                var body_html = '<p>'+data.description+'</p>';
+                
+                if (data.company_logo !== '') {
+                     body_html += '<p><img src="http://127.0.0.1/~Dan/random_stuff/cdia_job_board/api/uploads/'+data.company_logo+'" alt="" /></p>';
+                }
+                
+                $('#job_details .modal-body').html(body_html);
                 
                 $('#job_details').modal();
             });

@@ -24,8 +24,8 @@
             
             <div class="nav-collapse collapse">
                 <ul class="nav">
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="#">Blog</a></li>
+                    <li><a href="post_job.php">Post a Job</a></li>
+                    <li><a href="#">About</a></li>
                     <li><a href="">Contact</a></li>
                 </ul>
             </div>
