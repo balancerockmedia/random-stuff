@@ -32,7 +32,7 @@ CREATE TABLE job (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     company VARCHAR(255) NOT NULL,
-    company_logo VARCHAR(255) NOT NULL,
+    company_logo VARCHAR(255) NULL,
     tagline TEXT NULL,
     description TEXT NULL,
     category_id INT NOT NULL,
