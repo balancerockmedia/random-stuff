@@ -11,12 +11,12 @@ require_once __DIR__.'/cdia/Database.php';
 $app = new Silex\Application();
 
 // debug mode
-$app['debug'] = true;
+$app['debug'] = TRUE;
 
 // inject Database object
 $app['db'] = new cdia\Database();
 
-// get all jobs
+// get all jobs or search
 $app->get('/jobs', function(Request $request) use ($app) {    
     $query = <<<EOD
     
