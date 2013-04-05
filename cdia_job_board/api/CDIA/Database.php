@@ -31,6 +31,17 @@ class Database {
     
     /**
      *
+     * @param string $table
+     * @return PDOStatement
+     */
+    public function truncate($table) {
+        $result = $this->pdo->exec("TRUNCATE TABLE $table");
+        
+        return $result;
+    }
+    
+    /**
+     *
      * @param string $query
      * @param array $params
      * @return PDOStatement

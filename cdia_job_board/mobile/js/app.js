@@ -6,7 +6,7 @@ require.config({
 
 require(['templates', 'favorites'], function(templates, favorites) {
 
-    var api_url = 'http://173.203.102.128/cdia_job_board/api/index.php/';
+    var api_url = '../api/index.php/';
 
     var init = function() {
         $.getJSON(api_url + 'jobs?callback=?', function(data) {             

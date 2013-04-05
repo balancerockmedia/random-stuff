@@ -1,9 +1,9 @@
 define({
     job_row: '<li><a href="#" data-id="<%= job_id %>">\
-    <h2><%= title %></h2><p><strong>Science Exchange</strong> - <%= location_name %></p>\
-    <p><%= tagline %></p><p class="ui-li-aside"><strong><%= type %></strong></p></a></li>',
+    <h2><%= title %></h2><p><strong><%= company %></strong> - <%= location_name %></p>\
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p><p class="ui-li-aside"><strong><%= type %></strong></p></a></li>',
 
-    job_details: '<h2><%= title %></h2><p><%= description %></p><p>\
+    job_details: '<h2><%= title %></h2><%= description %>\
     <p><a href="#" class="add_favorite" data-id="<%= job_id %>" data-title="<%= title %>"\
     data-role="button">Add to Favorites</a></p>',
 

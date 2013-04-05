@@ -39,7 +39,7 @@ jb.search = {
     		$.getJSON(jb.api_url + 'job/' + id, function(data) {                    
                 $('#job_details h3').text(data.title);
                 
-                var body_html = '<p>'+data.description+'</p>';
+                var body_html = data.description;
                 
                 if (data.company_logo !== '') {
                      body_html += '<p><img src="http://127.0.0.1/~Dan/random_stuff/cdia_job_board/api/uploads/'+data.company_logo+'" alt="" /></p>';
