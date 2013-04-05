@@ -36,7 +36,7 @@ jb.search = {
             
             var id = $(e.target).attr('data-id');
             
-    		$.getJSON(jb.api_url + 'job/' + id, function(data) {                    
+            $.getJSON(jb.api_url + 'job/' + id, function(data) {                    
                 $('#job_details h3').text(data.title);
                 
                 var body_html = data.description;
@@ -178,8 +178,8 @@ jb.search = {
             console.log('Error using localstorage: ' + error);
         }
         
-		// load and populate jobs
-		$.getJSON(jb.api_url + 'jobs', {search: jb.search.search_data}, function(data) {                    
+        // load and populate jobs
+        $.getJSON(jb.api_url + 'jobs', {search: jb.search.search_data}, function(data) {                    
             $('table tbody').empty();
                     
             var new_html = ''
@@ -187,7 +187,7 @@ jb.search = {
             $.each(data, function() {
                 new_html += '<tr>';
                         
-				new_html +=  '<td>'+this.location_name+'</td>';
+                new_html +=  '<td>'+this.location_name+'</td>';
                 new_html +=  '<td>'+this.title+'</td>';
                 new_html +=  '<td>'+this.category_name+'</td>';
                 
@@ -200,7 +200,7 @@ jb.search = {
             });
                     
             $('table tbody').html(new_html);
-		});
+        });
     }
 }
 
