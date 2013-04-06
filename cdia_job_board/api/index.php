@@ -43,7 +43,7 @@ EOD;
     if (!is_null($search)) {
         $where = '';
         
-        if ($search['keyword'] !== '') {
+        if (isset($search['keyword']) && $search['keyword'] !== '') {
             if ($where === '') {
                 $where .= " WHERE FIND_IN_SET(:keyword_with_no_spaces, REPLACE(keywords.keyword_list, SPACE(1), ''))";
             } else {
@@ -53,7 +53,7 @@ EOD;
             $params['keyword_with_no_spaces'] = str_replace(' ', '', $search['keyword']);
         }
         
-        if ($search['location'] !== '') {
+        if (isset($search['location']) && $search['location'] !== '') {
             if ($where === '') {
                 $where .= " WHERE location.name = :location";
             } else {
@@ -63,7 +63,7 @@ EOD;
             $params['location'] = $search['location'];
         }
         
-        if ($search['category'] !== '') {
+        if (isset($search['category']) && $search['category'] !== '') {
             if ($where === '') {
                 $where .= " WHERE category.name = :category";
             } else {
