@@ -4,8 +4,8 @@ define(
   
   var initialize = function() {
     // create router
-    cdia_job_board.router = new Router();
-  
+    CDIAJobBoard.router = new Router();
+    
     // create nav bar
     var navbar_view = new NavbarView();
     $('body').append(navbar_view.render().el);

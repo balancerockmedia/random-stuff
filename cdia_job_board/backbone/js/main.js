@@ -1,6 +1,12 @@
-var cdia_job_board = {
-  api_url: 'http://127.0.0.1/~Dan/random_stuff/cdia_job_board/api/index.php/'
+var CDIAJobBoard = {
+  config: {
+    api_url: 'http://127.0.0.1/~Dan/random_stuff/cdia_job_board/api/index.php/' 
+  },
+  events: {}
 }
+
+// events bus
+_.extend(CDIAJobBoard.events, Backbone.Events)
 
 // require.js config
 require.config({

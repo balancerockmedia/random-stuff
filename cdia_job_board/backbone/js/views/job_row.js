@@ -23,7 +23,7 @@ define([], function(config) {
     
       var id = $(e.target).attr('data-id');
     
-      cdia_job_board.router.navigate('job/' + id, {trigger: true});
+      CDIAJobBoard.router.navigate('job/' + id, {trigger: true});
     }
   });
   
