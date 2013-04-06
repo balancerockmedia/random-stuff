@@ -79,7 +79,7 @@ jb.views.ContentView = Backbone.View.extend({
         model: model
       });
       
-      that.$el.find('tbody').append(search_form_view.el)
+      that.$('tbody').append(search_form_view.el)
     });
     
     return this;
@@ -88,6 +88,10 @@ jb.views.ContentView = Backbone.View.extend({
 
 jb.views.JobRowView = Backbone.View.extend({
   tagName: 'tr',
+  
+  events: {
+    'click .details': 'clickDetails'
+  },
   
   initialize: function() {
     this.render();
@@ -98,10 +102,37 @@ jb.views.JobRowView = Backbone.View.extend({
     this.$el.html(job_row_template(this.model.toJSON()));
     
     return this;
+  },
+  
+  clickDetails: function(e) {
+    e.preventDefault();
+    
+    var id = $(e.target).attr('data-id');
+    
+    jb.router.navigate('job/' + id, {trigger: true});
+  }
+});
+
+// router
+var Router = Backbone.Router.extend({
+  routes: {
+    '': 'index',
+    'job/:id': 'job'
+  },
+
+  index: function() {
+  
+  },
+
+  job: function(id) {
+    
   }
 });
 
 jb.init = function() {
+  // create router
+  jb.router = new Router();
+  
   // create nav bar
   var navbar_view = new jb.views.NavbarView();
   $('body').append(navbar_view.render().el);
