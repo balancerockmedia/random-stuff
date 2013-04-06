@@ -7,7 +7,7 @@ define(['views/job_details'], function(JobDetailsView) {
     },
 
     index: function() {
-      
+      $('#job_details_modal').modal('hide');
     },
 
     job: function(id) {
