@@ -1,8 +1,6 @@
 define([], function() {
   
   var search_form = Backbone.View.extend({
-    el: '#search_bar',
-  
     initialize: function() {
       this.render();
     },
