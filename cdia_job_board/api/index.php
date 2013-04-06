@@ -5,7 +5,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 require_once __DIR__.'/vendor/autoload.php';
 require_once __DIR__.'/config.php';
-require_once __DIR__.'/cdia/Database.php';
+require_once __DIR__.'/cdia/Database2.php';
 
 // create the Silex application
 $app = new Silex\Application();
@@ -14,7 +14,7 @@ $app = new Silex\Application();
 $app['debug'] = TRUE;
 
 // inject Database object
-$app['db'] = new cdia\Database();
+$app['db'] = new cdia\Database2();
 
 // get all jobs or search
 $app->get('/jobs', function(Request $request) use ($app) {    
@@ -87,11 +87,19 @@ EOD;
 
 // get job by id
 $app->get('/job/{id}', function(Request $request, $id) use ($app) {
-    $query = <<<EOD
+    /*$query = <<<EOD
     
     SELECT job.id AS job_id, job.title, job.company, job.company_logo, job.description 
     FROM job 
     WHERE job.id = :id
+                  
+EOD;*/
+
+    $query = <<<EOD
+    
+    SELECT job.id AS job_id, job.title, job.company, job.company_logo, job.description 
+    FROM job 
+    WHERE job.id = '$id'
                   
 EOD;
     
