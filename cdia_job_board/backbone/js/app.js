@@ -1,10 +1,10 @@
 define(
-  ['config', 'router', 'views/navbar', 'views/content', 'collections/jobs'],
-  function(config, Router, NavbarView, ContentView, Jobs) {
+  ['router', 'views/navbar', 'views/content', 'collections/jobs'],
+  function(Router, NavbarView, ContentView, Jobs) {
   
   var initialize = function() {
     // create router
-    config.router = new Router();
+    cdia_job_board.router = new Router();
   
     // create nav bar
     var navbar_view = new NavbarView();

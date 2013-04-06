@@ -1,4 +1,4 @@
-define(['config'], function(config) {
+define([], function(config) {
   
   var job_row = Backbone.View.extend({
     tagName: 'tr',
@@ -23,7 +23,7 @@ define(['config'], function(config) {
     
       var id = $(e.target).attr('data-id');
     
-      config.router.navigate('job/' + id, {trigger: true});
+      cdia_job_board.router.navigate('job/' + id, {trigger: true});
     }
   });
   
