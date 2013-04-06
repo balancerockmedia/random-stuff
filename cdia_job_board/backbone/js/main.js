@@ -11,12 +11,10 @@ _.extend(CDIAJobBoard.events, Backbone.Events)
 
 // require.js config
 require.config({
-    urlArgs: 't=' + (new Date()).getTime()
+  urlArgs: 't=' + (new Date()).getTime()
 });
 
 // initialize app
 require(['app'], function(app) {
-  
   app.initialize();
-  
 });
