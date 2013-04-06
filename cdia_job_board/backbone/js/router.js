@@ -1,4 +1,4 @@
-define([], function() {
+define(['views/job_details'], function(JobDetailsView) {
   
   var router = Backbone.Router.extend({
     
@@ -16,7 +16,9 @@ define([], function() {
     },
 
     job: function(id) {
-    
+      var job_details_view = new JobDetailsView({
+        model: CDIAJobBoard.collections.jobs.get(id)
+      });
     }
   });
   

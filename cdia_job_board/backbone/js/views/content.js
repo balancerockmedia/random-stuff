@@ -11,15 +11,15 @@ define(['views/search_form', 'views/job_row'], function(SearchFormView, JobRowVi
     },
   
     render: function() {
+      var context = this;
+      
       var navbar_template = Handlebars.compile($("#content_template").html());
       this.$el.html(navbar_template());
     
       // add search form
       var search_form_view = new SearchFormView({
-        el: this.$el.find('#search_bar')
+        el: this.$('#search_bar')
       });
-    
-      var that = this;
     
       // add jobs to table
       _.forEach(this.collection.models, function(model) {
@@ -27,7 +27,7 @@ define(['views/search_form', 'views/job_row'], function(SearchFormView, JobRowVi
           model: model
         });
       
-        that.$('tbody').append(search_form_view.el)
+        context.$('tbody').append(search_form_view.el)
       });
     
       return this;

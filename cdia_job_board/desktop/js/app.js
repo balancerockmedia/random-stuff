@@ -39,9 +39,9 @@ jb.search = {
             $.getJSON(jb.api_url + 'job/' + id, function(data) {                    
                 $('#job_details h3').text(data.title);
                 
-                var body_html = data.description;
+                var body_html = '<p>' + data.description + '</p>';
                 
-                if (data.company_logo !== '') {
+                if (data.company_logo !== '' && data.company_logo !== null) {
                      body_html += '<p><img src="http://127.0.0.1/~Dan/random_stuff/cdia_job_board/api/uploads/'+data.company_logo+'" alt="" /></p>';
                 }
                 
@@ -194,7 +194,7 @@ jb.search = {
                 var keywords = (this.keyword_list === null) ? '' : this.keyword_list;
                 
                 new_html +=  '<td>'+keywords+'</td>';
-                new_html +=  '<td><a class="btn btn-primary details" href="#" data-id="'+this.job_id+'">Details</a></td>';
+                new_html +=  '<td><a class="btn btn-primary details" href="#" data-id="'+this.id+'">Details</a></td>';
                         
                 new_html += '</tr>';
             });

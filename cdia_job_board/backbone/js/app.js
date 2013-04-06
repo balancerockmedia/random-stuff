@@ -3,6 +3,9 @@ define(
   function(Router, NavbarView, ContentView, Jobs) {
   
   var initialize = function() {
+    // get jobs
+    CDIAJobBoard.collections.jobs = new Jobs();
+    
     // create router
     CDIAJobBoard.router = new Router();
     
@@ -10,12 +13,9 @@ define(
     var navbar_view = new NavbarView();
     $('body').append(navbar_view.render().el);
   
-    // get jobs
-    var jobs = new Jobs();
-  
     // create content view with jobs collection
     var content_view = new ContentView({
-      collection: jobs
+      collection: CDIAJobBoard.collections.jobs
     });
     $('body').append(content_view.render().el);
   }
