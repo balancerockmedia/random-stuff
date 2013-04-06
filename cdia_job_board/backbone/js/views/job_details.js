@@ -8,11 +8,15 @@ define([], function() {
     initialize: function() {
       var context = this;
       
-      this.model.fetch({
-        success: function(model, response, options) {
-          context.render();
-        }
-      });
+      if (this.model === undefined) {
+        CDIAJobBoard.router.navigate('', {trigger: true});
+      } else {
+        this.model.fetch({
+          success: function(model, response, options) {
+            context.render();
+          }
+        });
+      }
     },
   
     render: function() {

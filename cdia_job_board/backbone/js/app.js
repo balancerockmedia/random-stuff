@@ -6,9 +6,6 @@ define(
     // get jobs
     CDIAJobBoard.collections.jobs = new Jobs();
     
-    // create router
-    CDIAJobBoard.router = new Router();
-    
     // create nav bar
     var navbar_view = new NavbarView();
     $('body').append(navbar_view.render().el);
@@ -18,6 +15,9 @@ define(
       collection: CDIAJobBoard.collections.jobs
     });
     $('body').append(content_view.render().el);
+    
+    // create router
+    CDIAJobBoard.router = new Router();
   }
   
   return {
