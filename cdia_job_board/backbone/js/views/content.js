@@ -1,4 +1,6 @@
-define(['views/search_form', 'views/job_row'], function(SearchFormView, JobRowView) {
+define(
+  ['views/search_form', 'views/job_row', 'views/sidebar'],
+  function(SearchFormView, JobRowView, SidebarView) {
   
   var content = Backbone.View.extend({
     tagName: 'div',
@@ -20,6 +22,11 @@ define(['views/search_form', 'views/job_row'], function(SearchFormView, JobRowVi
       });
     
       this.populateJobs();
+      
+      // add sidebar
+      var sidebar_view = new SidebarView({
+        el: this.$('#sidebar')
+      });
     
       return this;
     },
@@ -27,14 +34,14 @@ define(['views/search_form', 'views/job_row'], function(SearchFormView, JobRowVi
     populateJobs: function() {
       var context = this;
       
-      context.$('tbody').empty();
+      this.$('tbody').empty();
       
       _.forEach(this.collection.models, function(model) {
         var search_form_view = new JobRowView({
           model: model
         });
       
-        context.$('tbody').append(search_form_view.el)
+        context.$('tbody').append(search_form_view.el);
       });
     }
   });

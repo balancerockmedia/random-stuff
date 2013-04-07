@@ -1,10 +1,11 @@
 define(
-  ['router', 'views/navbar', 'views/content', 'collections/jobs'],
-  function(Router, NavbarView, ContentView, Jobs) {
+  ['router', 'views/navbar', 'views/content', 'collections/jobs', 'collections/favorites'],
+  function(Router, NavbarView, ContentView, Jobs, Favorites) {
   
   var initialize = function() {
-    // get jobs
+    // set collections
     CDIAJobBoard.collections.jobs = new Jobs();
+    CDIAJobBoard.collections.favorites = new Favorites();
     
     // create nav bar
     var navbar_view = new NavbarView();

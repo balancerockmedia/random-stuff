@@ -4,6 +4,10 @@ define([], function() {
     tagName: 'div',
     id: 'job_details_modal',
     className: 'modal hide fade',
+    
+    events: {
+      'click .add_to_favorites': 'clickAddToFavorites'
+    },
   
     initialize: function() {
       var context = this;
@@ -36,6 +40,13 @@ define([], function() {
       this.$el.modal();
       
       return this;
+    },
+    
+    // events
+    clickAddToFavorites: function(e) {
+      e.preventDefault();
+      
+      CDIAJobBoard.collections.favorites.add(this.model);
     }
   });
   
