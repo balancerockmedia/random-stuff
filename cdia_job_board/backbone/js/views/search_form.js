@@ -14,7 +14,14 @@ define([], function() {
       var search_form_template = Handlebars.compile($("#search_form_template").html());
       this.$el.html(search_form_template());
       
-      // keywords
+      this.keywords();
+      this.locations();
+    
+      return this;
+    },
+    
+    // render helpers
+    keywords: function() {
       this.$('input[name="keyword"]').typeahead({
         source: ['CSS', 'HTML', 'Photoshop', 'PHP', 'Mobile', 'Responsive Design'],
     
@@ -25,8 +32,9 @@ define([], function() {
           return item;
         }
       });
-      
-      // location
+    },
+    
+    locations: function() {
       this.$('input[name="location"]').typeahead({
         source: function(query, process) {
           $.getJSON(CDIAJobBoard.config.api_url + 'states?callback=?', function (data) {
@@ -47,10 +55,9 @@ define([], function() {
           return item;
         }
       });
-    
-      return this;
     },
     
+    // events
     changeCategory: function(e) {
       e.preventDefault();
       
