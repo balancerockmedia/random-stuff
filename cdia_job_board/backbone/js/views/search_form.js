@@ -13,6 +13,17 @@ define([], function() {
     render: function() {
       var search_form_template = Handlebars.compile($("#search_form_template").html());
       this.$el.html(search_form_template());
+      
+      this.$('input[name="keyword"]').typeahead({
+        source: ['CSS', 'HTML', 'Photoshop', 'PHP', 'Mobile', 'Responsive Design'],
+    
+        updater: function(item) {
+          CDIAJobBoard.search_fields.keyword = item;
+          CDIAJobBoard.collections.jobs.search();
+      
+          return item;
+        }
+      });
     
       return this;
     },
@@ -20,13 +31,22 @@ define([], function() {
     changeCategory: function(e) {
       e.preventDefault();
       
-      CDIAJobBoard.collections.jobs.filterByCategory($(e.target).val());
+      CDIAJobBoard.search_fields.category = $(e.target).val();
+      CDIAJobBoard.collections.jobs.search();
     },
     
     clickReset: function(e) {
       e.preventDefault();
       
-      CDIAJobBoard.collections.jobs.fetch();
+      CDIAJobBoard.search_fields = {
+        keyword: null,
+        location: null,
+        category: null
+      };
+      
+      this.$('input[name="keyword"], input[name="location"]').val('');
+      
+      CDIAJobBoard.collections.jobs.search();
     }
   });
   

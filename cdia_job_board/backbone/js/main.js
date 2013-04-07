@@ -3,6 +3,11 @@ var CDIAJobBoard = {
     api_url: 'http://127.0.0.1/~Dan/random_stuff/cdia_job_board/api/index.php/' 
   },
   collections: {},
+  search_fields: {
+    keyword: null,
+    location: null,
+    category: null
+  },
   events: {}
 }
 

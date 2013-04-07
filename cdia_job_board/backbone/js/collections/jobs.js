@@ -4,12 +4,10 @@ define(['models/job'], function(Job) {
     model: Job,
     url: CDIAJobBoard.config.api_url + 'jobs',
     
-    filterByCategory: function(category) {
+    search: function(category) {
       this.fetch({
         data: {
-          search: {
-            category: category
-          }
+          search: CDIAJobBoard.search_fields
         }
       });
     }

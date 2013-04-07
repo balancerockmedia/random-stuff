@@ -11,6 +11,7 @@
 
 namespace Silex;
 
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpKernel\HttpKernel;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\TerminableInterface;
@@ -26,9 +27,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\Routing\RouteCollection;
-use Symfony\Component\Routing\RequestContext;
+use Silex\RequestContext;
 use Silex\RedirectableUrlMatcher;
 use Silex\ControllerResolver;
 use Silex\EventListener\LocaleListener;
@@ -48,8 +48,8 @@ class Application extends \Pimple implements HttpKernelInterface, TerminableInte
     const EARLY_EVENT = 512;
     const LATE_EVENT  = -512;
 
-    private $providers = array();
-    private $booted = false;
+    protected $providers = array();
+    protected $booted = false;
 
     /**
      * Instantiate a new Application.
@@ -65,10 +65,6 @@ class Application extends \Pimple implements HttpKernelInterface, TerminableInte
         $app = $this;
 
         $this['logger'] = null;
-
-        $this['autoloader'] = function () {
-            throw new \RuntimeException('You tried to access the autoloader service. The autoloader has been removed from Silex. It is recommended that you use Composer to manage your dependencies and handle your autoloading. See http://getcomposer.org for more information.');
-        };
 
         $this['routes'] = $this->share(function () {
             return new RouteCollection();
@@ -154,6 +150,8 @@ class Application extends \Pimple implements HttpKernelInterface, TerminableInte
      *
      * @param ServiceProviderInterface $provider A ServiceProviderInterface instance
      * @param array                    $values   An array of values that customizes the provider
+     *
+     * @return Application
      */
     public function register(ServiceProviderInterface $provider, array $values = array())
     {
@@ -164,6 +162,8 @@ class Application extends \Pimple implements HttpKernelInterface, TerminableInte
         foreach ($values as $key => $value) {
             $this[$key] = $value;
         }
+
+        return $this;
     }
 
     /**
@@ -254,7 +254,7 @@ class Application extends \Pimple implements HttpKernelInterface, TerminableInte
      * Adds an event listener that listens on the specified events.
      *
      * @param string   $eventName The event to listen on
-     * @param callable $listener  The listener
+     * @param callable $callback  The listener
      * @param integer  $priority  The higher this value, the earlier an event
      *                            listener will be triggered in the chain (defaults to 0)
      */
@@ -364,7 +364,7 @@ class Application extends \Pimple implements HttpKernelInterface, TerminableInte
      */
     public function flush($prefix = '')
     {
-        $this['routes']->addCollection($this['controllers']->flush($prefix), $prefix);
+        $this['routes']->addCollection($this['controllers']->flush($prefix));
     }
 
     /**
@@ -373,7 +373,7 @@ class Application extends \Pimple implements HttpKernelInterface, TerminableInte
      * @param string  $url    The URL to redirect to
      * @param integer $status The status code (302 by default)
      *
-     * @see RedirectResponse
+     * @return RedirectResponse
      */
     public function redirect($url, $status = 302)
     {
@@ -387,7 +387,7 @@ class Application extends \Pimple implements HttpKernelInterface, TerminableInte
      * @param integer $status   The response status code
      * @param array   $headers  An array of response headers
      *
-     * @see StreamedResponse
+     * @return StreamedResponse
      */
     public function stream($callback = null, $status = 200, $headers = array())
     {
@@ -416,7 +416,7 @@ class Application extends \Pimple implements HttpKernelInterface, TerminableInte
      * @param integer $status  The response status code
      * @param array   $headers An array of response headers
      *
-     * @see JsonResponse
+     * @return JsonResponse
      */
     public function json($data = array(), $status = 200, $headers = array())
     {
@@ -424,10 +424,33 @@ class Application extends \Pimple implements HttpKernelInterface, TerminableInte
     }
 
     /**
+     * Sends a file.
+     *
+     * @param \SplFileInfo|string $file               The file to stream
+     * @param integer             $status             The response status code
+     * @param array               $headers            An array of response headers
+     * @param null|string         $contentDisposition The type of Content-Disposition to set automatically with the filename
+     *
+     * @return BinaryFileResponse
+     *
+     * @throws \RuntimeException When the feature is not supported, before http-foundation v2.2
+     */
+    public function sendFile($file, $status = 200, $headers = array(), $contentDisposition = null)
+    {
+        if (!class_exists('Symfony\Component\HttpFoundation\BinaryFileResponse')) {
+            throw new \RuntimeException('The "sendFile" method is only supported as of Http Foundation 2.2.');
+        }
+
+        return new BinaryFileResponse($file, $status, $headers, true, $contentDisposition);
+    }
+
+    /**
      * Mounts controllers under the given route prefix.
      *
      * @param string                                           $prefix      The route prefix
      * @param ControllerCollection|ControllerProviderInterface $controllers A ControllerCollection or a ControllerProviderInterface instance
+     *
+     * @return Application
      */
     public function mount($prefix, $controllers)
     {
@@ -439,7 +462,9 @@ class Application extends \Pimple implements HttpKernelInterface, TerminableInte
             throw new \LogicException('The "mount" method takes either a ControllerCollection or a ControllerProviderInterface instance.');
         }
 
-        $this['routes']->addCollection($controllers->flush($prefix), $prefix);
+        $this['routes']->addCollection($controllers->flush($prefix));
+
+        return $this;
     }
 
     /**
