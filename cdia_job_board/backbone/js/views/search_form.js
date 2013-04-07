@@ -14,11 +14,34 @@ define([], function() {
       var search_form_template = Handlebars.compile($("#search_form_template").html());
       this.$el.html(search_form_template());
       
+      // keywords
       this.$('input[name="keyword"]').typeahead({
         source: ['CSS', 'HTML', 'Photoshop', 'PHP', 'Mobile', 'Responsive Design'],
     
         updater: function(item) {
           CDIAJobBoard.search_fields.keyword = item;
+          CDIAJobBoard.collections.jobs.search();
+      
+          return item;
+        }
+      });
+      
+      // location
+      this.$('input[name="location"]').typeahead({
+        source: function(query, process) {
+          $.getJSON(CDIAJobBoard.config.api_url + 'states?callback=?', function (data) {
+            var states = [];
+        
+            _.forEach($.parseJSON(data), function(state) {
+               states.push(state.name); 
+            });
+        
+            return process(states);
+          });
+        },
+    
+        updater: function(item) {
+          CDIAJobBoard.search_fields.location = item;
           CDIAJobBoard.collections.jobs.search();
       
           return item;
