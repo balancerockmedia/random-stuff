@@ -33,7 +33,7 @@ define([], function() {
             var states = [];
         
             _.forEach($.parseJSON(data), function(state) {
-               states.push(state.name); 
+              states.push(state.name); 
             });
         
             return process(states);
