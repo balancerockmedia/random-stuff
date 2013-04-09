@@ -7,10 +7,10 @@ redis = Redis.new
 REDIS_KEY = 'tweets'
 
 TweetStream.configure do |config|
-  config.consumer_key       = 'ziSPylsn6R5JTEYNjG85VA'
-  config.consumer_secret    = 'qMdJuk4yeIpnGAxJaH4ZT78yWxHjPNf7Ho5Qw3jLLoQ'
-  config.oauth_token        = '414909499-0kUQ80Jn4jFPhwN3oiVf4ZmAMzAh73cAGxK9l1df'
-  config.oauth_token_secret = 'kxPe9KTKuk3Ve7ssOI5NbSEAXsKErgEhqcu3YeidY'
+  config.consumer_key       = ''
+  config.consumer_secret    = ''
+  config.oauth_token        = ''
+  config.oauth_token_secret = ''
   config.auth_method        = :oauth
 end
 
