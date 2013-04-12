@@ -13,8 +13,8 @@ define(
     },
   
     render: function() {
-      var navbar_template = Handlebars.compile($("#content_template").html());
-      this.$el.html(navbar_template());
+      var content_template = Handlebars.compile($("#content_template").html());
+      this.$el.html(content_template());
     
       // add search form
       var search_form_view = new SearchFormView({
@@ -37,11 +37,11 @@ define(
       this.$('tbody').empty();
       
       _.forEach(this.collection.models, function(model) {
-        var search_form_view = new JobRowView({
+        var job_row_view = new JobRowView({
           model: model
         });
       
-        context.$('tbody').append(search_form_view.el);
+        context.$('tbody').append(job_row_view.el);
       });
     }
   });
