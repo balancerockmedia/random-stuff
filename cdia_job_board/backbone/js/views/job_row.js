@@ -1,4 +1,4 @@
-define([], function(config) {
+define([], function() {
   
   var job_row = Backbone.View.extend({
     tagName: 'tr',
