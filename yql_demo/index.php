@@ -1,6 +1,9 @@
 <?php
 
-$rss_feeds = array('CNN' => 'http://rss.cnn.com/rss/cnn_topstories.rss', 'YAHOO' => 'http://rss.news.yahoo.com/rss/topstories');
+$rss_feeds = array(
+  'CNN' => 'http://rss.cnn.com/rss/cnn_topstories.rss', 
+  'YAHOO' => 'http://rss.news.yahoo.com/rss/topstories'
+);
 
 $ch = curl_init();
 
