@@ -1,0 +1,7 @@
+Discount Rate Exercise
+
+1. Create an array that contains a few Apple products. You need to store the name, price, and condition (new or used) of each item.
+
+2. Create an HTML form that let's you select a product and a discount rate (1-99) and includes an "all products" option
+
+3. Write a function that will apply the selected discount rate to one or all products
