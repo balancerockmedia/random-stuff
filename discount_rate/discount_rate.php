@@ -7,14 +7,13 @@ setlocale(LC_MONETARY, 'en_US');
  *
  * @param array $products 
  * @param string $product 
- * @param string $discount 
- * @param bool $all_products 
+ * @param string $discount
  * @return string
  */
-function discount($products, $product, $discount, $all_products) {
+function discount($products, $product, $discount) {
     $new_prices = '';
     
-    if ($all_products === TRUE) {
+    if ($product === 'all') {
         foreach ($products as $key => $value) {
             $orig_price = $value['price'];
             $new_price = $orig_price - ($orig_price * ($discount * .01));
@@ -58,10 +57,10 @@ $product_options .= '<option value="all">All Products</option>';
 
 // decide what to do if it's one product or all products
 if (isset($_POST['submit'])) {
-    if ($_POST['product'] == 'all') {
-        $new_prices = discount($products, $_POST['product'], $_POST['rate'], TRUE);
+    if (empty($_POST['product']) || empty($_POST['rate'])) {
+        $new_prices = 'No Selection!';
     } else {
-        $new_prices = discount($products, $_POST['product'], $_POST['rate'], FALSE);
+        $new_prices = discount($products, $_POST['product'], $_POST['rate']);
     }
 }
 
@@ -85,16 +84,16 @@ select { width: 150px; }
 
 <div id="container">
     
-    <form id="my_form" method="post" action="discount_rate.php"> 
+    <form method="post" action="discount_rate.php"> 
         <p><label for="product">Product:</label>
         <select name="product" id="product">
-            <option value="null">Select One</option>
+            <option value="">Select One</option>
             <?php echo $product_options; ?>
         </select></p>
         
         <p><label for="rate">Discount Rate:</label>
         <select name="rate" id="rate">
-            <option value="null">Select One</option>
+            <option value="">Select One</option>
             <?php echo $rates; ?>
         </select></p>
 
