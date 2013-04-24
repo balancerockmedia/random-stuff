@@ -8,6 +8,10 @@ class NewsItem {
         $this->date = $date;
         $this->description = $description;
     }
+    
+    public function __toString() {
+        return $this->title;
+    }
 }
 
 ?>

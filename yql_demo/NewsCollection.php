@@ -1,17 +1,17 @@
 <?php
 
+require 'Collection.php';
 require 'NewsItem.php';
 
-class NewsCollection {
+class NewsCollection extends Collection {
     public $feeds;
-    public $news_items;
     
     public function __construct($feeds) {
         $this->feeds = $feeds;
     }
     
     public function fetch() {
-        $this->news_items = array();
+        $this->items = array();
         
         $ch = curl_init();
 
@@ -38,15 +38,11 @@ class NewsCollection {
                     $result['description']
                 );
         
-                $this->news_items[] = $news_item;
+                $this->items[] = $news_item;
             }
         }
 
         curl_close($ch);
-    }
-    
-    public function __toString() {
-        return count($this->news_items) . ' News Items';
     }
 }
 

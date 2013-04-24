@@ -12,4 +12,8 @@ $news_collection->fetch();
 
 echo $news_collection;
 
+foreach($news_collection->items as $item) {
+    echo "<p>$item</p>";
+}
+
 ?>
