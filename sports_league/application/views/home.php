@@ -20,7 +20,7 @@
 </div>
 
 <div class="container">
-    <h3>Home</h3>
+    <h3>Leagues</h3>
     
     <table class="table">
         <thead>
@@ -32,6 +32,25 @@
         <?php foreach ($leagues as $league): ?>
             <tr>
                 <td><a href="index.php/league/view/<?php echo $league->id; ?>"><?php echo $league->name; ?></a></td>
+            </tr>
+        <?php endforeach;?>
+        </tbody>
+    </table>
+    
+    <h3>Teams</h3>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>League</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($teams as $team): ?>
+            <tr>
+                <td><a href="index.php/team/view/<?php echo $team->id; ?>"><?php echo $team->name; ?></a></td>
+                <td><a href="index.php/league/view/<?php echo $team->league_id; ?>"><?php echo $team->league_name; ?></a></td>
             </tr>
         <?php endforeach;?>
         </tbody>
