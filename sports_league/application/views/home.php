@@ -11,7 +11,7 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-            <a class="brand" href="#">Soccer League</a>
+            <a class="brand" href="#">Sports League</a>
             <ul class="nav">
                 <li class="active"><a href="#">Home</a></li>
             </ul>
