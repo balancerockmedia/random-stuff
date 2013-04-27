@@ -20,22 +20,9 @@
 </div>
 
 <div class="container">
-    <h3>Home</h3>
+    <h3>League</h3>
     
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php foreach ($leagues as $league): ?>
-            <tr>
-                <td><a href="index.php/league/view/<?php echo $league->id; ?>"><?php echo $league->name; ?></a></td>
-            </tr>
-        <?php endforeach;?>
-        </tbody>
-    </table>
+    <p>Name: <?php echo $league->name; ?></p>
 </div>
 
 </body>
