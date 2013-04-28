@@ -1,6 +1,6 @@
-CREATE DATABASE soccer_league;
+CREATE DATABASE sports_league;
 
-USE soccer_league;
+USE sports_league;
 
 CREATE TABLE league (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -55,7 +55,7 @@ INSERT INTO game
     (date_played, team_id1, team_id2, location) 
 VALUES 
     ('2009-04-12', 1, 2, 'Boston'),
-    ('2010-01-19', 1, 2, 'Needham'),
+    ('2010-01-19', 1, 3, 'Needham'),
     ('2010-08-01', 3, 5, 'Westminster'),
     ('2010-12-14', 3, 4, 'Waltham');
 
