@@ -17,5 +17,3 @@ class League_model extends CI_Model {
     }
 
 }
-
-?>

@@ -33,7 +33,7 @@
         <tbody>
         <?php foreach ($players as $player): ?>
             <tr>
-                <td><a href="index.php/player/view/<?php echo $player->id; ?>"><?php echo $player->first_name; ?> <?php echo $player->last_name; ?></a></td>
+                <td><?php echo $player->first_name; ?> <?php echo $player->last_name; ?></td>
             </tr>
         <?php endforeach; ?>
         </tbody>
