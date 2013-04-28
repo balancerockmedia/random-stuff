@@ -20,9 +20,47 @@
 </div>
 
 <div class="container">
-    <h3>Team</h3>
+    <h3><?php echo $team->name; ?></h3>
     
-    <p>Name: <?php echo $team->name; ?></p>
+    <h4>Players</h4>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($players as $player): ?>
+            <tr>
+                <td><a href="index.php/player/view/<?php echo $player->id; ?>"><?php echo $player->first_name; ?> <?php echo $player->last_name; ?></a></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+    
+    <h4>Schedule</h4>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Location</th>
+                <th>Opponent</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($games as $game): ?>
+            <tr>
+                <td><?php echo date("F j, Y", strtotime($game->date_played)); ?></td>
+                <td><?php echo date("g:i a", strtotime($game->date_played)); ?></td>
+                <td><?php echo $game->location; ?></td>
+                <td><?php echo $game->opponent->name; ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
 </div>
 
 </body>

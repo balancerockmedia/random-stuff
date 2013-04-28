@@ -26,6 +26,28 @@ class Team_model extends CI_Model {
 
         return $query->row();
     }
+    
+    function get_schedule($team_id) {
+        $this->db->from('game');
+        $this->db->where('team_id1 =', $team_id);
+        $this->db->or_where('team_id2 =', $team_id); 
+        
+        $query = $this->db->get();
+        
+        $games = array();
+        
+        foreach ($query->result() as $game) {
+            if ($game->team_id1 === $team_id) {
+                $game->opponent = $this->get_by_id($game->team_id2);
+            } else {
+                $game->opponent = $this->get_by_id($game->team_id1);
+            }
+            
+            $games[] = $game;
+        }
+        
+        return $games;
+    }
 
 }
 

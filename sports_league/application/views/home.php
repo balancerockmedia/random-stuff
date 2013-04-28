@@ -33,7 +33,7 @@
             <tr>
                 <td><a href="index.php/league/view/<?php echo $league->id; ?>"><?php echo $league->name; ?></a></td>
             </tr>
-        <?php endforeach;?>
+        <?php endforeach; ?>
         </tbody>
     </table>
     
@@ -52,7 +52,7 @@
                 <td><a href="index.php/team/view/<?php echo $team->id; ?>"><?php echo $team->name; ?></a></td>
                 <td><a href="index.php/league/view/<?php echo $team->league_id; ?>"><?php echo $team->league_name; ?></a></td>
             </tr>
-        <?php endforeach;?>
+        <?php endforeach; ?>
         </tbody>
     </table>
 </div>
