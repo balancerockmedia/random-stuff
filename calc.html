@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Summation</title>
+</head>
+<body>
+    
+<script type="text/javascript">
+
+var input1 = prompt('Enter a number');
+var input2 = prompt('Enter an operator');
+var input3 = prompt('Enter a number');
+
+var result;
+
+switch(input2) {
+    case '+':
+    result = parseFloat(input1) + parseFloat(input3);
+    break;
+    
+    case '-':
+    result = parseFloat(input1) + parseFloat(input3);
+    break;
+    
+    case '*':
+    result = parseFloat(input1) * parseFloat(input3);
+    break;
+    
+    case '/':
+    if (parseFloat(input3) == 0) {
+        result = 'Can\'t divide by 0';
+    } else {
+        result = parseFloat(input1) / parseFloat(input3);
+    }
+    break;
+}
+
+alert(result);
+
+</script>
+
+</body>
+</html>
