@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <title>Sports League</title>
-<link rel="stylesheet" type="text/stylesheet" href="<?php echo $this->config->item('base_url'); ?>/public/css/bootstrap.css" />
-<link rel="stylesheet" type="text/stylesheet" href="<?php echo $this->config->item('base_url'); ?>/public/css/main.css" />
+<link rel="stylesheet" type="text/stylesheet" href="<?php echo $this->config->item('base_url'); ?>public/css/bootstrap.css" />
+<link rel="stylesheet" type="text/stylesheet" href="<?php echo $this->config->item('base_url'); ?>public/css/main.css" />
 </head>
 <body>
     
