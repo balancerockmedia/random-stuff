@@ -28,12 +28,18 @@
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Email</th>
+                <th>Town</th>
+                <th>Date of Birth</th>
             </tr>
         </thead>
         <tbody>
         <?php foreach ($players as $player): ?>
             <tr>
                 <td><?php echo $player->first_name; ?> <?php echo $player->last_name; ?></td>
+                <td><?php echo $player->email; ?></td>
+                <td><?php echo $player->town; ?></td>
+                <td><?php echo $player->dob; ?></td>
             </tr>
         <?php endforeach; ?>
         </tbody>

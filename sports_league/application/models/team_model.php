@@ -6,10 +6,13 @@ class Team_model extends CI_Model {
         parent::__construct();
     }
     
-    function get_all() {
-        $this->db->select('team.*, league.name AS league_name');
+    function get_all_by_league($league_id) {
+        $this->db->select('team.*, league.name AS league_name, count(player.id) AS num_players');
         $this->db->from('team');
         $this->db->join('league', 'league.id = team.league_id');
+        $this->db->join('player', 'player.team_id = team.id', 'left outer');
+        $this->db->where('league_id', $league_id);
+        $this->db->group_by('team.id');
         
         $query = $this->db->get();
 

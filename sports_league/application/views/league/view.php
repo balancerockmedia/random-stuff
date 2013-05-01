@@ -20,9 +20,24 @@
 </div>
 
 <div class="container">
-    <h3>League</h3>
+    <h3><?php echo $league->name; ?></h3>
     
-    <p>Name: <?php echo $league->name; ?></p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Team Name</th>
+                <th># Players</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($teams as $team): ?>
+            <tr>
+                <td><a href="<?php echo $this->config->item('base_url'); ?>index.php/team/view/<?php echo $team->id; ?>"><?php echo $team->name; ?></a></td>
+                <td><?php echo $team->num_players; ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
 </div>
 
 </body>

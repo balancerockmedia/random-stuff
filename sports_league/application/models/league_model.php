@@ -7,7 +7,13 @@ class League_model extends CI_Model {
     }
     
     function get_all() {
-        $query = $this->db->get('league');
+        $this->db->select('league.*, count(team.id) AS num_teams');
+        $this->db->from('league');
+        $this->db->join('team', 'team.league_id = league.id');
+        $this->db->group_by('league.id');
+        
+        $query = $this->db->get();
+        
         return $query->result();
     }
     

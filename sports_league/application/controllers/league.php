@@ -4,8 +4,10 @@ class League extends CI_Controller {
 
 	public function view($id) {
         $this->load->model('League_model');
+        $this->load->model('Team_model');
         
         $data['league'] = $this->League_model->get_by_id($id);
+        $data['teams'] = $this->Team_model->get_all_by_league($id);
         
 		$this->load->view('league/view', $data);
 	}
