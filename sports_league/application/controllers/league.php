@@ -12,4 +12,12 @@ class League extends CI_Controller {
 		$this->load->view('league/view', $data);
 	}
     
+    public function add_game($id) {
+        $this->load->model('League_model');
+        
+        $this->League_model->add_game();
+        
+        redirect('league/view/' . $id);
+    }
+    
 }

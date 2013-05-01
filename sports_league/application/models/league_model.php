@@ -21,5 +21,18 @@ class League_model extends CI_Model {
         $query = $this->db->get_where('league', array('id' => $id));
         return $query->row();
     }
+    
+    function add_game() {
+        $data = array(
+           'date_played' => date('Y-m-d H:i:s', strtotime($this->input->post('date_played'))),
+           'location' => $this->input->post('location'),
+           'team_id1' => $this->input->post('team_id1'),
+           'team_id2' => $this->input->post('team_id2'),
+        );
+
+        $this->db->insert('game', $data);
+        
+        return $this->db->insert_id();
+    }
 
 }
