@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title></title>
+<script type="text/javascript">
+	window.onload = function() {
+		var links = document.getElementsByTagName('a');
+		
+		for (var i=0; i < links.length; i++) {
+			links[i].onclick = function() {
+				document.getElementById('fullsize_img').src = this.href;
+				
+				return false;
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	
+<div id="thumbs">
+	<a href="http://lorempixel.com/500/300/sports/1/"><img src="http://lorempixel.com/50/50/sports/1/" /></a>
+	
+	<a href="http://lorempixel.com/500/300/sports/2/"><img src="http://lorempixel.com/50/50/sports/2/" /></a>
+	
+	<a href="http://lorempixel.com/500/300/sports/3/"><img src="http://lorempixel.com/50/50/sports/3/" /></a>
+	
+	<a href="http://lorempixel.com/500/300/sports/4/"><img src="http://lorempixel.com/50/50/sports/4/" /></a>
+</div>
+
+<div id="fullsize">
+	<img id="fullsize_img" src="http://lorempixel.com/500/300/sports/1/" />
+</div>
+
+</body>
+</html>
