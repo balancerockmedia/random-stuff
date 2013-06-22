@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title></title>
+<style type="text/css">
+	#prev_link, #next_link {
+		text-decoration: none;
+		font: 80px georgia;
+		color: #333;
+	}
+</style>
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+	
+	// jQuery version of window.load
+	$(function() {
+		
+		// jQuery version of a for loop
+		$.each($('a').not('#prev_link, #next_link'), function() {
+			var link = $(this);
+			
+			link.on('click', function(e) {
+				// jQuery version of return false
+				e.preventDefault();
+				
+				$('#fullsize_img').fadeOut(function() {
+					$('#fullsize_img').attr('src', link.attr('href')).load(function() {
+						$('#fullsize_img').fadeIn();
+					});
+				});
+			});
+		});
+		
+		var link_index = 1;
+		
+		// prev link
+		$('#prev_link').on('click', function(e) {
+			e.preventDefault();
+			
+			if (link_index === 1) {
+				link_index = 4;
+			} else {
+				link_index--;
+			}
+			
+			var link = $('a').eq(link_index);
+			
+			$('#fullsize_img').fadeOut(function() {
+				$('#fullsize_img').attr('src', link.attr('href')).load(function() {
+					$('#fullsize_img').fadeIn();
+				});
+			});
+		});
+		
+		// next link
+		$('#next_link').on('click', function(e) {
+			e.preventDefault();
+			
+			if (link_index === 4) {
+				link_index = 1;
+			} else {
+				link_index++;
+			}
+			
+			var link = $('a').eq(link_index);
+			
+			$('#fullsize_img').fadeOut(function() {
+				$('#fullsize_img').attr('src', link.attr('href')).load(function() {
+					$('#fullsize_img').fadeIn();
+				});
+			});
+		});
+		
+	});
+	
+</script>
+</head>
+<body>
+	
+<div id="thumbs">
+	<a id="prev_link" href="#">&laquo;</a>
+	
+	<a href="http://lorempixel.com/500/300/sports/1/"><img src="http://lorempixel.com/50/50/sports/1/" /></a>
+	
+	<a href="http://lorempixel.com/500/300/sports/2/"><img src="http://lorempixel.com/50/50/sports/2/" /></a>
+	
+	<a href="http://lorempixel.com/500/300/sports/3/"><img src="http://lorempixel.com/50/50/sports/3/" /></a>
+	
+	<a href="http://lorempixel.com/500/300/sports/4/"><img src="http://lorempixel.com/50/50/sports/4/" /></a>
+	
+	<a id="next_link" href="#">&raquo;</a>
+</div>
+
+<div id="fullsize">
+	<img id="fullsize_img" src="http://lorempixel.com/500/300/sports/1/" />
+</div>
+
+</body>
+</html>
