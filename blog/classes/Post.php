@@ -3,7 +3,6 @@
 class Post extends Blog {
     
     public function getAllPosts($category = null) {
-        
         if (!is_null($category)) {
             $where = "WHERE category.id = $category";
         } else {
