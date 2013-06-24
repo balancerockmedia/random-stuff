@@ -41,7 +41,7 @@ require 'actions.php';
             <div class="nav-collapse collapse">
                 <ul class="nav">
                     <li class="active"><a href="index.php">Home</a></li>
-                    <li><a href="#about">About</a></li>
+                    <li><a href="#">About</a></li>
                 </ul>
             </div>
         </div>
@@ -51,9 +51,17 @@ require 'actions.php';
 <div class="container">
     <div class="row">
         <div class="span6">
+            <ul class="nav nav-pills">
+                <?php echo $category->getCategoryLinks((isset($_GET['category'])) ? $_GET['category'] : NULL); ?>
+            </ul>
+            
             <?php
             
-            $posts = $post->getAllPosts();
+            if (isset($_GET['category'])) {
+                $posts = $post->getAllPosts($_GET['category']);
+            } else {
+                $posts = $post->getAllPosts();
+            }
                 
             $i = 0;
             $post_id = null;
@@ -92,11 +100,15 @@ require 'actions.php';
                 $i++;
             }
 
-            if ($i == $num_posts) {
+            if ($i == $num_posts && $num_posts > 0) {
                 $retval .= '</div>';
             }
             
-            echo $retval; 
+            if ($num_posts === 0) {
+                echo ' <p>No Posts</p>';
+            } else {
+                echo $retval;
+            }
                 
             ?>
         </div>

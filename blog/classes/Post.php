@@ -2,7 +2,14 @@
 
 class Post extends Blog {
     
-    public function getAllPosts() {
+    public function getAllPosts($category = null) {
+        
+        if (!is_null($category)) {
+            $where = "WHERE category.id = $category";
+        } else {
+            $where = '';
+        }
+        
         $sql = <<<EOL
             
             SELECT 
@@ -14,13 +21,19 @@ class Post extends Blog {
                 comment.post_id AS comment_post_id, 
                 comment.title AS comment_title, 
                 DATE_FORMAT(comment.last_updated, '%b %e, %Y') AS comment_date, 
-                comment.body AS comment_body 
+                comment.body AS comment_body,
+                category.id AS category_id,
+                category.title AS category_title 
             FROM post 
+            INNER JOIN user 
+                ON post.user_id = user.id 
+            INNER JOIN category 
+                ON category.id = post.category_id 
             LEFT OUTER JOIN comment 
                 ON comment.post_id = post.id 
-            LEFT OUTER JOIN user 
-                ON post.user_id = user.id
-                
+            $where
+            ORDER BY post_id ASC
+            
 EOL;
 
         $stmt = $this->pdo->prepare($sql);
@@ -40,12 +53,14 @@ EOL;
 
         $stmt = $this->pdo->prepare($sql);
 
-        $stmt->execute(array(
+        $result = $stmt->execute(array(
             $_POST['title'],
             $_POST['body'],
             $_POST['user_id'],
             $_POST['category_id']
         ));
+            
+        return $result;
     }
     
     public function updatePost() {
@@ -53,20 +68,24 @@ EOL;
 
         $stmt = $this->pdo->prepare($sql);
 
-        $stmt->execute(array(
+        $result = $stmt->execute(array(
             $_POST['title'],
             $_POST['body'],
             $_POST['user_id'],
             $_POST['category_id'],
             $_POST['id']
         ));
+            
+        return $result;
     }
     
     public function deletePost($id) {
         $sql = "DELETE FROM post WHERE id = ?";
         
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute(array($id));
+        $result = $stmt->execute(array($id));
+        
+        return $result;
     }
     
 }
