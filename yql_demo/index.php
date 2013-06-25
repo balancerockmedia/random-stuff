@@ -4,7 +4,7 @@ require 'NewsCollection.php';
 
 $feeds = array(
   'CNN' => 'http://rss.cnn.com/rss/cnn_topstories.rss', 
-  'YAHOO' => 'http://rss.news.yahoo.com/rss/topstories'
+  'NPR' => 'http://www.npr.org/rss/rss.php?id=1001'
 );
 
 $news_collection = new NewsCollection($feeds);
