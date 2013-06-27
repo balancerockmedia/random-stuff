@@ -13,10 +13,7 @@ function anagrams(strings) {
     var sorted = [];
     
     for (var i=0; i < strings.length; i++) {
-        var chars = strings[i].split('');
-        var sorted_chars = chars.sort();
-        var new_string = chars.join('');
-        sorted.push(new_string);
+        sorted.push(strings[i].split('').sort().join(''));
     }
     
     var num_anagrams = 0;

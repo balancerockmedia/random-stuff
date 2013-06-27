@@ -20,6 +20,11 @@ if (isset($_REQUEST['action'])) {
         $post->deletePost($_GET['id']);
         header('Location: index.php');
         break;
+        
+        case 'add_comment':
+        $comment->addComment();
+        header('Location: index.php');
+        break;
     }
 }
 
