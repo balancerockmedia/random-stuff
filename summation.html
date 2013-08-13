@@ -8,7 +8,7 @@
     
 <script type="text/javascript">
 
-// option 1 using a simple function and loop
+// option 1 using a loop
 function summation1(num) {
     var total = 0;
     
@@ -21,7 +21,7 @@ function summation1(num) {
 
 alert(summation1(10));
 
-// option 2 using a recursive function
+// option 2 using recursion
 function summation2(num) {
     if (num > 0) {
         return num + summation2(num-1);
