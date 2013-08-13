@@ -21,23 +21,16 @@ function summation1(num) {
 
 alert(summation1(10));
 
-
-// option 2 using a recursive function and callback
-function summation2(num, total, callback) {
-    total = (total === null) ? 0 : total;
-    
+// option 2 using a recursive function
+function summation2(num) {
     if (num > 0) {
-        total += num;
-        
-        summation2(num-1, total, callback);
+        return num + summation2(num-1);
     } else {
-        callback(total);
+        return 0;
     }
 }
 
-summation2(10, null, function(total) {
-    alert(total);
-});
+alert(summation2(10));
 
 </script>
 
