@@ -8,6 +8,7 @@ spl_autoload_register(function ($class) {
 });
 
 $post = new Post();
+$comment = new Comment();
 $user = new User();
 $category = new Category();
 
@@ -76,6 +77,8 @@ require 'actions.php';
                     $retval .= '</div>';
                 } else {
                     if ($i !== 0) {
+                        $retval .= $comment->getFormHTML($post_id);
+                        
                         $retval .= '</div>';
                     }
 
@@ -85,7 +88,7 @@ require 'actions.php';
 
                     $retval .= '<p>'.$row->post_body.'</p>';
         
-                    $retval .= '<p><a href="index.php?action=edit_post&id='.$row->post_id.'">Edit</a> | <a href="index.php?action=delete_post&id='.$row->post_id.'">Delete</a></p>';
+                    $retval .= '<p><a href="#">Leave Comment</a> | <a href="index.php?action=edit_post&id='.$row->post_id.'">Edit</a> | <a href="index.php?action=delete_post&id='.$row->post_id.'">Delete</a></p>';
 
                     if ($row->comment_title != '') {
                         $retval .= '<div class="comment">';
@@ -101,6 +104,8 @@ require 'actions.php';
             }
 
             if ($i == $num_posts && $num_posts > 0) {
+                $retval .= $comment->getFormHTML($post_id);
+                
                 $retval .= '</div>';
             }
             
