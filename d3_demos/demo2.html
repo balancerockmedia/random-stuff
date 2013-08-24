@@ -11,7 +11,7 @@ p.arc_color {
 }     
 </style>
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/d3.v3.js"></script>
 <script type="text/javascript">
 
 var dataset = [
@@ -23,7 +23,8 @@ var dataset = [
 
 var width = 400,
     height = 400,
-    radius = Math.min(width, height) / 2;
+    radius = Math.min(width, height) / 2,
+	rotation = 0;
 
 var arc = d3.svg.arc()
     .outerRadius(radius - 40)
@@ -55,17 +56,53 @@ g.append("path")
     .attr("d", arc)
     .style("fill", function(d) { return d.data.color; });
 
+// initial rotation
+svg.selectAll(".arc").attr("transform", "rotate(45)");
+
 d3.select("body").append("p").attr('class', 'arc_color').text('Click on a pie slice');
     
 g.on('click', function(d) {
     if (d3.select(this).select("path").attr('active') === 'true') {
+        // svg.selectAll(".arc").transition()
+//             .duration(500)
+//             .attr("transform", "rotate(45)");
+        
         svg.selectAll(".arc").select("path").transition()
             .duration(500)
             .attr("d", arc)
             .attr('active', false);
         
         d3.select("p").attr('class', 'arc_color').text('Click on a pie slice');
+        
+        //rotation = 0;
     } else {
+        var index = $(d3.select(this).node()).index();
+        var rotate_to = 45;
+        
+        switch(index) {
+            case 1:
+            rotate_to = 315;
+            break;
+        
+            case 2:
+            rotate_to = 225;
+            break;
+    
+            case 3:
+            rotate_to = 135;
+            break;
+        }
+				
+		while (rotate_to < rotation) rotate_to += 360;
+
+        svg.selectAll(".arc").transition()
+            .duration(500)
+			.attrTween("transform", function(d, i, a) {
+				console.log(a, rotate_to);
+				return d3.interpolateString(a, "rotate("+rotate_to+")");
+			});
+            //.attr("transform", "rotate("+rotate_to+")");
+        
         svg.selectAll(".arc").select("path").transition()
             .duration(500)
             .attr("d", arc3)
@@ -77,6 +114,8 @@ g.on('click', function(d) {
             .attr('active', true);
             
         d3.select("p").attr('class', 'arc_color').text('This color is ' + d.data.color);
+
+		rotation = rotate_to;
     }
 });
 
