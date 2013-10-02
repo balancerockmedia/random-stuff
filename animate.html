@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Summation</title>
+<style type="text/css">
+#box {
+    position: absolute;
+    background: red;
+    height: 100px;
+    width: 100px;
+}
+</style>
+</head>
+<body>
+    
+<div id="box" style="left: 0"></div>
+    
+<script type="text/javascript">
+
+var box = document.getElementById('box');
+
+setInterval(function() {
+    box.style.left = (parseInt(box.style.left) + 1) + 'px';
+}, 50);
+
+</script>
+
+</body>
+</html>
