@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -92,15 +92,15 @@ g.on('click', function(d) {
             rotate_to = 135;
             break;
         }
-				
-		while (rotate_to < rotation) rotate_to += 360;
+                
+        while (rotate_to < rotation) rotate_to += 360;
 
         svg.selectAll(".arc").transition()
             .duration(500)
-			.attrTween("transform", function(d, i, a) {
-				console.log(a, rotate_to);
-				return d3.interpolateString(a, "rotate("+rotate_to+")");
-			});
+            .attrTween("transform", function(d, i, a) {
+                console.log(a, rotate_to);
+                return d3.interpolateString(a, "rotate("+rotate_to+")");
+            });
             //.attr("transform", "rotate("+rotate_to+")");
         
         svg.selectAll(".arc").select("path").transition()
@@ -115,7 +115,7 @@ g.on('click', function(d) {
             
         d3.select("p").attr('class', 'arc_color').text('This color is ' + d.data.color);
 
-		rotation = rotate_to;
+        rotation = rotate_to;
     }
 });
 
