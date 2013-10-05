@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+ul {
+    width: 428px;
+    margin: 0 auto;
+    padding: 0;
+}
+ul li {
+    float: left;
+    width: 100px;
+    border: 1px solid #444;
+    list-style: none;
+    padding: 70px 0;
+    margin: 0 5px 5px 0;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+}
+ul li.flipped {
+    color: #444;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script type="text/javascript">
+
+$(function() {
+    var firstCard = null;
+
+    $('li').on('click', function(e) {
+        e.preventDefault();
+
+        $(this).addClass('flipped');
+
+        if (firstCard === null) {
+            firstCard = $(this);
+        } else {
+            if (firstCard.text() === $(this).text()) {
+                firstCard = null;
+            } else {
+                var secondCard = this;
+
+                setTimeout(function() {
+                    firstCard.removeClass('flipped');
+                    $(secondCard).removeClass('flipped');
+
+                    firstCard = null;
+                }, 1000);
+            }
+        }
+    });
+});
+
+</script>
+</head>
+<body>
+    
+<ul>
+    <li>salmon</li>
+    <li>swordfish</li>
+    <li>swordfish</li>
+    <li>shrimp</li>
+    <li>lobster</li>
+    <li>scallops</li>
+    <li>lobster</li>
+    <li>salmon</li>
+    <li>tuna</li>
+    <li>scallops</li>
+    <li>tuna</li>
+    <li>shrimp</li>
+</ul>
+
+</body>
+</html>
