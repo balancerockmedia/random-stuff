@@ -1,0 +1,109 @@
+﻿/* -----------------------------------------------------------------------------
+ * Primary Styles
+ * -------------------------------------------------------------------------- */
+
+/* apply a natural box layout model to all elements */
+* {
+    @include box-sizing(border-box);
+}
+
+body {
+    background-color: $page-background-color;
+}
+
+h1 {
+    font: normal normal 20px Arial;
+    margin: 0 0 10px 0;
+}
+
+h2 {
+    font: normal normal 16px Arial;
+    margin: 0 0 10px 0;
+}
+
+select {
+    display: block;
+}
+
+.nodisplay {
+    display: none;
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+/* -----------------------------------------------------------------------------
+ * Home Page
+ * -------------------------------------------------------------------------- */
+#home-page {
+    padding: 10px;
+}
+
+#home-page .button-bar {
+    margin-top: 10px;
+}
+
+/* -----------------------------------------------------------------------------
+ * Order Table Page
+ * -------------------------------------------------------------------------- */
+#orders-page {
+    padding: 10px;
+}
+
+// header
+#orders-page header {
+    border-bottom: 1px solid #333;
+    margin-bottom: 10px;
+}
+
+#orders-page header h1, 
+#orders-page header h2 {
+    font: normal normal 16px Arial;
+    margin-bottom: 5px;
+}
+
+#orders-page header h2 {
+    font-style: italic;
+}
+
+#orders-page header h2 a {
+    font: normal normal 12px Arial;
+    text-decoration: none;
+}
+
+#orders-page header {
+    @include clearfix();
+}
+
+// order nav
+#orders-page nav.order-nav {
+    @include clearfix();
+}
+
+#orders-page nav.order-nav a.button.text-button {
+    margin-right: 5px;
+}
+
+#orders-page nav.order-nav a.button.image-button {
+    margin-left: 5px;
+}
+
+// order table
+#orders-page table.order-table {
+    margin-top: 10px;
+    width: 100%;
+}
+
+#orders-page table.order-table th {
+    background: #bbb;
+    font-weight: normal;
+}
+
+#orders-page table.order-table td {
+    text-align: center;
+}

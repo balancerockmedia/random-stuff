@@ -1,0 +1,57 @@
+/* -----------------------------------------------------------------------------
+ * buttons
+ * -------------------------------------------------------------------------- */
+a.button {
+    background-color: $button-background-color;
+    color: $white;
+    display: block;
+    font-size: 12px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    text-decoration: none;
+    @include transition-property(background-color);
+    @include transition-duration(0.3s);
+}
+
+a.button:hover {
+    background-color: $button-hover-color;
+}
+
+a.button:active {
+    color: $black;
+    background-color: $button-active-color;
+}
+
+a.button span  {
+    display: block;
+}
+
+/* -----------------------------------------------------------------------------
+ * button.image-button
+ * -------------------------------------------------------------------------- */
+a.button.image-button {
+    width: 30px;
+}
+
+/* -----------------------------------------------------------------------------
+ * button.text-button
+ * -------------------------------------------------------------------------- */
+a.button.text-button {
+    width: 90px;
+}
+
+/* -----------------------------------------------------------------------------
+ * icons
+ * -------------------------------------------------------------------------- */
+a.button.table-icon span  {
+    background: url(../img/table.png) no-repeat 6px 6px;
+    width: 22px;
+    height: 19px;
+}
+
+a.button.chart-icon span  {
+    background: url(../img/chart.png) no-repeat 7px 6px;
+    width: 22px;
+    height: 17px;
+}

@@ -2,7 +2,9 @@
     
 $img_formats = array('jpg', 'gif', 'png');
 
-$extension = end(explode('.', $_FILES['file_upload']['name']));
+$segments = explode('.', $_FILES['file_upload']['name']);
+
+$extension = end($segments);
 
 if (in_array($extension, $img_formats)) {
     $uploaddir = dirname(__FILE__) . '/uploads/';
