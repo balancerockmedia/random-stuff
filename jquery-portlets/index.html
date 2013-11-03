@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="stylesheet" href="http://codeorigin.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<style>
+	.container { width: 960px; margin: 0 auto; }
+	.column { width: 320px; float: left; padding-bottom: 2em; }
+	.portlet { margin: 1em 1em 0 0; }
+	.portlet-header { margin: 0.3em; padding-bottom: 4px; padding-left: 0.2em; }
+	.portlet-header .ui-icon { float: right; }
+	.portlet-content { padding: 0.4em; }
+	.ui-sortable-placeholder { border: 1px dotted black; visibility: visible !important; height: 50px !important; }
+	.ui-sortable-placeholder * { visibility: hidden; }
+    
+    .full-width-block {
+        margin: 0 0 1em;
+        clear: both;
+        width: 940px;
+    }
+</style>
+<script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="http://codeorigin.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+<script src="underscore-min.js"></script>
+<script>
+    
+	$(function() {
+        // load saved grid
+        var savedGrid = JSON.parse(localStorage.getItem('widgetGrid'));
+        
+        // if there is a saved grid, create an array of the 
+        // portlet elements and then remove them from the DOM
+        if (savedGrid !== null) {
+            var portlets = [];
+            
+            $('.portlet').each(function() {
+                portlets.push($(this)[0]);
+                
+                $(this).remove();
+            });
+            
+            // iterate through the saved grid, match each item up to the saved portlet and then
+            // insert it into the DOM at the right position
+            $.each(savedGrid, function(i, columnSet) {
+                $.each(columnSet, function(j, column) {
+                    $.each(column.split(','), function(k, item) {
+                        var found = _.find(portlets, function(portlet) {
+                            return $(portlet).attr('id') === item;
+                        });
+                        
+                        $('.columnSet:eq('+i+') .column:eq('+j+')').append(found);
+                    });
+                });
+            });
+        }
+        
+        var widgetGrid = [['', '', ''],['', '', '']];
+        
+		$( ".column" ).sortable({
+			connectWith: ".column",
+            stop: function(event, ui) {
+                // save the new order of each column
+                $('.columnSet').each(function(i) {
+                    $('.column', $(this)).each(function(j) {
+                        widgetGrid[i].splice(j, 1, $(this).sortable("toArray").toString());
+                    });
+                });
+                
+                localStorage.setItem('widgetGrid', JSON.stringify(widgetGrid));
+            }
+		});
+
+        // add the jQuery UI classes
+		$( ".portlet" ).addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
+			.find( ".portlet-header" )
+				.addClass( "ui-widget-header ui-corner-all" )
+				.end()
+			.find( ".portlet-content" );
+	});
+</script>
+</head>
+<body>
+    
+<div class="container">    
+    
+    <div class="columnSet">
+        <div class="column">
+        	<div class="portlet" id="item_1">
+        		<div class="portlet-header">Feeds</div>
+        		<div class="portlet-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</div>
+        	</div>
+
+        	<div class="portlet" id="item_2">
+        		<div class="portlet-header">News</div>
+        		<div class="portlet-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</div>
+        	</div>
+        </div>
+
+        <div class="column">
+        	<div class="portlet" id="item_3">
+        		<div class="portlet-header">Shopping</div>
+        		<div class="portlet-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+        	</div>
+        </div>
+
+        <div class="column">
+        	<div class="portlet" id="item_4">
+        		<div class="portlet-header">Links</div>
+        		<div class="portlet-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+        	</div>
+
+        	<div class="portlet" id="item_5">
+        		<div class="portlet-header" id="item_4">Images</div>
+        		<div class="portlet-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</div>
+        	</div>
+        </div>
+    </div>
+
+    <div class="ui-widget ui-widget-content ui-corner-all full-width-block">
+		<div class="ui-widget-header ui-corner-all portlet-header">This one won't move</div>
+		<div class="portlet-content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </div>
+
+    <div class="columnSet">
+        <div class="column">
+        	<div class="portlet" id="item_6">
+        		<div class="portlet-header">Feeds</div>
+        		<div class="portlet-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</div>
+        	</div>
+
+        	<div class="portlet" id="item_7">
+        		<div class="portlet-header">News</div>
+        		<div class="portlet-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</div>
+        	</div>
+        </div>
+
+        <div class="column">
+        	<div class="portlet" id="item_8">
+        		<div class="portlet-header">Shopping</div>
+        		<div class="portlet-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+        	</div>
+        </div>
+
+        <div class="column">
+        	<div class="portlet" id="item_9">
+        		<div class="portlet-header">Links</div>
+        		<div class="portlet-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+        	</div>
+
+        	<div class="portlet" id="item_10">
+        		<div class="portlet-header">Images</div>
+        		<div class="portlet-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</div>
+        	</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
