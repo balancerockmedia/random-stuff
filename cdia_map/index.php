@@ -122,7 +122,7 @@
 </div>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc41-D-3KuweoDpD4npOB7ApJnaVSWpk4A&sensor=false"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc41-D-3KuweoDpD4npOB7ApJnaVSWpk4&sensor=false"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 
