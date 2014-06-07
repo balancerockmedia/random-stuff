@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-var MathHelpers = require('./math-helpers').MathHelpers;
+var MathHelpers = require('./mathHelpers').MathHelpers;
 var Car = require('./Car').Car;
 
 // mocha --reporter spec --timeout 5000
