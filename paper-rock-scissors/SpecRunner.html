@@ -4,12 +4,22 @@
 <head>
 <title>Jasmine Spec Runner</title>
 <link rel="stylesheet" type="text/css" href="lib/jasmine-2.0.0/jasmine.css">
+
+<style type="text/css" media="screen">
+#blanket-main {
+    margin: 50px 0 0 !important;
+}
+</style>
+
 <script type="text/javascript" src="lib/jasmine-2.0.0/jasmine.js"></script>
 <script type="text/javascript" src="lib/jasmine-2.0.0/jasmine-html.js"></script>
 <script type="text/javascript" src="lib/jasmine-2.0.0/boot.js"></script>
 
+<script src="lib/blanket.js"></script>
+<script type="text/javascript" src="lib/jasmine-blanket.js"></script>
+
 <!-- include source files here... -->
-<script type="text/javascript" src="src/Game.js"></script>
+<script type="text/javascript" src="src/Game.js" data-cover></script>
 
 <!-- include spec files here... -->
 <script type="text/javascript" src="spec/GameSpec.js"></script>
