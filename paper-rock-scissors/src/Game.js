@@ -7,7 +7,9 @@ var Game = function() {
         return Math.floor(Math.random() * (max - min + 1) + min);
     };
 
-    this.takeTurn = function(you) {
+    this.takeTurn = function() {
+        var you = prompt('rock, paper or scissors?');
+        
         you = this.choices.indexOf(you);
 
         var computer = this.getRandomInt(0, 2);

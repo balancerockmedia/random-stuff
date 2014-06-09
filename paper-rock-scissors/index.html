@@ -9,8 +9,7 @@
 var game = new Game();
 
 for (var i = 0; i < 3; i++) {
-    var you = prompt('rock, paper or scissors?');
-    var turn = game.takeTurn(you);
+    var turn = game.takeTurn();
     
     console.log(turn);
     

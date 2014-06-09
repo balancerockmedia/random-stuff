@@ -30,9 +30,11 @@ describe('Game', function() {
     });
     
     it('should take a turn', function() {
+        spyOn(window, 'prompt').and.returnValue('rock');
+        
         spyOn(game, 'getRandomInt').and.returnValue(1);
         
-        var turn = game.takeTurn('rock');
+        var turn = game.takeTurn();
         
         var expected = {
             'you': 0,
@@ -45,9 +47,22 @@ describe('Game', function() {
     it('should repeat turn if both players choose the same value', function() {
         spyOn(game, 'getRandomInt').and.returnValue(0);
         
+        var firstChoice;
+        
+        // force prompt to return duplicate value first time but not second
+        spyOn(window, 'prompt').and.callFake(function() {
+            if (firstChoice === 'rock') {
+                return 'paper';
+            } else {
+                firstChoice = 'rock';
+                
+                return 'rock';
+            }
+        });
+        
         var takeTurnSpy = spyOn(game, 'takeTurn').and.callThrough();
         
-        var turn = game.takeTurn('rock');
+        var turn = game.takeTurn();
         
         expect(takeTurnSpy.calls.count()).toEqual(2);
     });
