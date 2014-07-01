@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Job Board</title>
+<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<body>
+    
+<section id="container">
+    <header class="clearfix">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Experiences</a></li>
+        </ul>
+    </header>
+    
+    <section id="content" class="clearfix">
+        <section id="search" class="clearfix">
+            <h3>Live Search</h3>
+            
+            <form id="search-form" method="post" action="#">
+                <p><label for="location"><strong>Location</strong> (e.g. Boston)</label>
+                <input type="text" class="text" id="location" name="location" /></p>
+                
+                <p><label for="keyword"><strong>Keyword</strong> (e.g. Web Developer)</label>
+                <input type="text" class="text" id="keyword" name="keyword" /></p>
+            </form>
+        </section>
+        
+        <section id="search-results">
+            <p id="search-term">Search results for <strong>"Put name of search term here"</strong></p>
+            
+            <table id="search-results-table">
+                <thead>
+                    <tr>
+                        <th>Location</th>
+                        <th>Description</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr>
+                        <td>Name of Location</td>
+                        <td>Description of Location and/or keywords</td>
+                        <td class="view"><a href="#">View Now</a></td>
+                    </tr>
+            
+                    <tr>
+                        <td>Name of Location</td>
+                        <td>Description of Location and/or keywords</td>
+                        <td class="view"><a href="#">View Now</a></td>
+                    </tr>
+            
+                    <tr>
+                        <td>Name of Location</td>
+                        <td>Description of Location and/or keywords</td>
+                        <td class="view"><a href="#">View Now</a></td>
+                    </tr>
+            
+                    <tr>
+                        <td>Name of Location</td>
+                        <td>Description of Location and/or keywords</td>
+                        <td class="view"><a href="#">View Now</a></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Name of Location</td>
+                        <td>Description of Location and/or keywords</td>
+                        <td class="view"><a href="#">View Now</a></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Name of Location</td>
+                        <td>Description of Location and/or keywords</td>
+                        <td class="view"><a href="#">View Now</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    
+        <section id="contact">
+            <h2>Contact Us</h2>
+        
+            <form id="contact-form" method="post" action="#">
+                <p><label for="name">Name:</label>
+                <input type="text" class="text" id="name" name="name" /></p>
+                
+                <p><label for="email">Email Address:</label>
+                <input type="text" class="text" id="email" name="email" /></p>
+                
+                <p><label for="comments">Comments:</label>
+                <textarea id="comments" name="comments" rows="10" cols="50"></textarea></p>
+                
+                <p><button type="submit" name="submit">SUBMIT</button></p>
+            </form>
+        </section>
+    </section>
+</section>
+
+</body>
+</html>
