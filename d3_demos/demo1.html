@@ -20,11 +20,11 @@ div.bar {
 
 var dataset = [5, 10, 15, 20, 25];
 
-// d3.select("body").selectAll("p")
-//     .data(dataset)
-//     .enter()
-//     .append("p")
-//     .text("New paragraph!");
+d3.select("body").selectAll("p")
+    .data(dataset)
+    .enter()
+    .append("p")
+    .text("New paragraph!");
 
 // d3.select("body").selectAll("p")
 //     .data(dataset)
@@ -56,12 +56,13 @@ var dataset = [5, 10, 15, 20, 25];
 //         return d * 5 + "px";
 //     });
 
-var svg = d3.select("body").append("svg");
-var circles = svg.selectAll("circle")
-    .data(dataset)
-    .enter()
-    .append("circle");
-//     
+// var svg = d3.select("body").append("svg");
+//
+// var circles = svg.selectAll("circle")
+//     .data(dataset)
+//     .enter()
+//     .append("circle");
+//
 // circles.attr("cx", function(d, i) {
 //         return (i * 80) + 25;
 //     })
