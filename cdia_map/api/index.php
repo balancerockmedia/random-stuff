@@ -5,7 +5,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 require_once __DIR__.'/vendor/autoload.php';
 require_once __DIR__.'/config.php';
-require_once __DIR__.'/cdia/Database.php';
+require_once __DIR__.'/CDIA/Database.php';
 
 // create the Silex application
 $app = new Silex\Application();

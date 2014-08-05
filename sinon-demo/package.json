@@ -1,0 +1,10 @@
+{
+  "name": "sinon-demo",
+  "version": "0.0.1",
+  "dependencies": {},
+  "devDependencies": {
+    "sinon": "^1.10.2",
+    "chai": "^1.9.1",
+    "sinon-chai": "^2.5.0"
+  }
+}

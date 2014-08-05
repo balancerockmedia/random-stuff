@@ -1,6 +1,6 @@
 var CDIAJobBoard = {
   config: {
-    api_url: 'http://127.0.0.1/~Dan/random_stuff/cdia_job_board/api/index.php/' 
+    api_url: 'http://127.0.0.1/~djohn3/random-stuff/cdia_job_board/api/index.php/' 
   },
   collections: {},
   search_fields: {
