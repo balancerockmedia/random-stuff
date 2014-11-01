@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>CSV Demo</title>
+</head>
+<body>
+    
+<header>Top text</header>
+    
+<table>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+    </tr>
+    <tr>
+        <td>Dan</td>
+        <td>Johnson</td>
+        <td>32</td>
+    </tr>
+    <tr>
+        <td>Ella</td>
+        <td>Johnson</td>
+        <td>9</td>
+    </tr>
+    <tr>
+        <td>Ella</td>
+        <td>Johnson</td>
+        <td>8</td>
+    </tr>
+</table>
+
+<footer>Bottom text</footer>
+
+<br>
+
+<script type="text/javascript">
+
+var data = [
+    {firstName: 'Dan', lastName: 'Johnson', age: 32},
+    {firstName: 'Ella', lastName: 'Johnson', age: 9},
+    {firstName: 'Ava', lastName: 'Johnson', age: 8}
+];
+
+var csvData = [];
+
+csvData.push('"First Name","last Name","Age","Other"');
+
+csvData.push('"","","","' + document.getElementsByTagName('header')[0].innerText + '"');
+
+
+for (var i = 0; i < data.length; i++) {
+    csvData.push('"' + data[i].firstName + '","' + data[i].lastName + '","' + data[i].age + '",""');
+}
+
+csvData.push('"","","","' + document.getElementsByTagName('footer')[0].innerText + '"');
+
+var fileName = 'data.csv';
+var buffer = csvData.join("\n");
+
+console.log(buffer);
+
+try {
+    var blob = new Blob([buffer], {
+        'type': 'text/csv;charset=utf8;'			
+    });
+} catch(e) {
+    console.log('Not supported, need server support');
+}
+
+var link = document.createElement('a');
+
+if (link.download !== undefined) {
+    link.setAttribute('href', window.URL.createObjectURL(blob));
+    link.setAttribute('download', fileName);
+} else if (navigator.msSaveBlob) {
+    link.setAttribute('href', '#');
+
+    link.onclick = function() {
+        navigator.msSaveBlob(blob, fileName);
+    
+        return false;
+    };
+}
+
+link.innerHTML = 'Export CSV';
+document.body.appendChild(link);
+
+</script>
+
+</body>
+</html>
