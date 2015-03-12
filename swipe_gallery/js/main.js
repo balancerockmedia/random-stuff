@@ -2,7 +2,8 @@ $(window).load(function() {
     var position = 0;
     var img_width = $('.gallery img:first').width();
     
-    $('.gallery').on('swipeleft', function() {
+    $('#leftButton').on('click', function() {
+    //$('.gallery').on('swipeleft', function() {
         if ($('.gallery').is(':animated')) {
             return false;
         }
@@ -16,7 +17,8 @@ $(window).load(function() {
         }
     });
     
-    $('.gallery').on('swiperight', function() {
+    $('#rightButton').on('click', function() {
+    //$('.gallery').on('swiperight', function() {
         if ($('.gallery').is(':animated')) {
             return false;
         }
