@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<title>Behavior Driven Development</title>
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="reveal.js-2.6.1/css/reveal.min.css">
+<link rel="stylesheet" href="reveal.js-2.6.1/css/theme/beige.css" id="theme">
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="reveal.js-2.6.1/lib/css/zenburn.css">
+
+<!--[if lt IE 9]>
+<script src="lib/js/html5shiv.js"></script>
+<![endif]-->
+</head>
+<body>
+
+<div class="reveal">
+    
+    <div class="slides">
+        <section>
+            <h2>Behavior Driven Development</h2>
+            <p><small>Created by <a href="mailto:djohnson@sapient.com">Daniel Johnson</a></small></p>
+        </section>
+        
+        <section>
+            <h2>The Plan</h2>
+            <ul>
+                <li>What is test driven development (TDD)</li>
+                <li>What is behavior driven development (BDD)</li>
+                <li>Intro to Cucumber</li>
+                <li>Examples using Mocha and Cucumber</li>
+            </ul>
+        </section>
+        
+        <section>
+            <section>
+                <h2>Test Driven Development</h2>
+                
+                <p>A software development technique that uses short cycles to incrementally design and develop software from the outside in</p>
+                <br>
+                <ol>
+                    <li>Write a test that shows the intent of what you would like the new code to do</li>
+                    <li>Write the code to make the test pass</li>
+                    <li>Refactor if needed to make it better</li>
+                </ol>
+            </section>
+            
+            <section>
+                <h2>Why write tests first?</h2>
+                <ul>
+                    <li>Forces you to think about the code before writing it</li>
+                    <li>Helps prevent from over-engineering the solution</li>
+                    <li>Write only the code that you need</li>
+                    <li>Reduces the ownership that any one developer has on a section of code</li>
+                    <li>Leads to better code coverage and less regressions</li>
+                    <li>Sometimes you can't write tests first and that's ok</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>Behavior Driven Development</h2>
+                
+                <p>"Many software projects suffer from low-quality communication between the domain experts and programmers on the team"</p>
+                
+                <br>
+                
+                <ul>
+                    <li>Merges TDD with automated acceptance testing</li>
+                    <li>A common language is needed to express the acceptance tests in a way that the stakeholder and the developer understand</li>
+                    <li>Similar to how a domain model can help everybody to understand the business objects</li>
+                    <li>Acceptance tests written as examples of the functionality that everybody can understand</li>
+                    <li>They become the living documentation</li>
+                    <li>Broken down into features, scenarios and steps</li>
+                </ul>
+            </section>
+        </section>
+        
+        <section>
+            <h2>Cucumber</h2>
+            
+            <ul>
+                <li>Command line tool that was first built for Ruby, but now has support for many other languages including JavaScript</li>
+                <li>Reads specifications from plain-language text files called features, examines them for scenarios to test, and then runs the scenarios against your system</li>
+                <li>Can be easily tied into build tools such as Grunt and Jenkins</li>
+            </ul>
+            
+        </section>
+        
+        <section>
+            <section>
+                <h2>Example Feature</h2>
+            
+                <pre><code data-trim>
+Feature: Sign up
+  Sign up should be quick and friendly.
+    
+  Scenario: Successful sign up
+    
+    New users should get a confirmation email and be 
+    greeted personally by the site once signed in.
+        
+      Given I have chosen to sign up
+      When I sign up with valid details
+      Then I should receive a confirmation email
+      And I should see a personalized greeting message
+                </code></pre>
+            </section>
+            
+            <section>
+                <h2>Example Feature</h2>
+                
+                <pre><code data-trim>
+Feature: Employee
+
+  Scenario: Create an employee and change their title
+  
+    Given an employee with the name of "Dan" and a title of "associate"
+    Then their name should be "Dan"
+    And their title should be "associate"
+    When I can change their title to "senior associate"
+    Then their new title should be "senior associate"
+                </code></pre>
+            </section>
+            
+            <section>
+                <h2>Example Step Deffinitions</h2>
+                
+                <pre><code data-trim>
+this.Given(
+  /^an employee with the name of "([^"]*)" and a title of "([^"]*)"$/,
+  function(arg1, arg2, callback) {
+    // code to implement this step
+    callback();
+  }
+);
+
+this.Then(/^their name should be "([^"]*)"$/, function(arg1, callback) {
+  // code to implement this step
+  callback();
+});
+
+this.Then(/^their title should be "([^"]*)"$/, function(arg1, callback) {
+  // code to implement this step
+  callback();
+});
+
+this.When(/^I can change their title to "([^"]*)"$/, function(arg1, callback) {
+  // code to implement this step
+  callback();
+});
+
+this.Then(/^their new title should be "([^"]*)"$/, function(arg1, callback) {
+  // code to implement this step
+  callback();
+});
+                </code></pre>
+            </section>
+        </section>
+        
+        <section>
+            <h2>Demo</h2>
+        </section>
+    </div>
+</div>
+
+<script src="reveal.js-2.6.1/lib/js/head.min.js"></script>
+<script src="reveal.js-2.6.1/js/reveal.min.js"></script>
+
+<script>
+
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+
+    transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Optional libraries used to extend on reveal.js
+    dependencies: [
+        { src: 'reveal.js-2.6.1/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+        { src: 'reveal.js-2.6.1/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: 'reveal.js-2.6.1/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } }
+    ]
+});
+
+</script>
+
+</body>
+</html>
