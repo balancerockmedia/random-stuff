@@ -5,7 +5,7 @@ var Car = function() {
     
     this.drive = function() {
         return 'driving...';
-    },
+    };
     
     this.paint = function(color, callback) {
         var that = this;
@@ -15,7 +15,7 @@ var Car = function() {
             
             callback();
         }, 2000);
-    }
-}
+    };
+};
 
 exports.Car = Car;
