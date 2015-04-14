@@ -1,0 +1,23 @@
+body {
+    padding-top: 50px;
+}
+
+.activity {
+    overflow: auto;
+}
+
+.channel-content {
+    display: none;
+}
+
+.well {
+    word-wrap: break-word;
+}
+
+.channel-users .active {
+    font-weight: bold;
+}
+
+.channel-users .away {
+    color: #aaa;
+}
