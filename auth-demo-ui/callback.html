@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Auth Demo Callback</title>
+</head>
+<body>
+
+<script type="text/javascript" src="vendor/jquery-2.1.3.min.js"></script>
+<script type="text/javascript">
+
+var email = window.location.search.split('?')[1];
+
+localStorage.setItem('ol-signedin', email);
+
+window.close();
+
+</script>
+
+</body>
+</html>             

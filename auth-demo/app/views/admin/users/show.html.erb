@@ -1,0 +1,6 @@
+<h1>User Profile</h1>
+
+<p>Email: <%= @user.email %></p>
+<p>Token: <%= @user.token %></p>
+
+<p><%= link_to 'Home', root_path %> | <%= link_to 'Log out', destroy_user_session_path, :method => :delete %></p>
